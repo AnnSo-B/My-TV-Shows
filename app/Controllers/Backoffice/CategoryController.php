@@ -140,11 +140,13 @@ class CategoryController extends CoreController
      */
     public function update($id)
     {
-        dump($id);
+        // get the category we want to update
+        $category = CATEGORY::find($id);
+
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form');
+        $this->show('backoffice', 'category/form', ['elem' => $category]);
 
     }
 }

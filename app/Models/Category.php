@@ -173,7 +173,31 @@ class Category extends CoreModel {
         // return it
         return $results;
     }
-        /**
+
+    /**
+     * Method to find a category acording to its id
+     */
+    static public function find($id)
+    {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = 'SELECT * 
+        FROM `category` 
+        WHERE `id` =' . $id;
+
+        // execute the request
+        $pdoStatement = $pdo->query($sql);
+
+        // prepare the results
+        $results = $pdoStatement->fetchObject(self::class);
+
+        // return the results
+        return $results;
+    }
+
+    /**
      * Method to insert a new category in DB
      * 
      * @return bool indicates the success or failure of the insertion
