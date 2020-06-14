@@ -1,6 +1,9 @@
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-add') ?>">Ajouter</a>
   <h2>Liste des catégories</h2>
+  <?php 
+    include __DIR__.'/../partials/session_messages.tpl.php';
+  ?>
   <table class="table table-striped">
     <thead>
       <tr>

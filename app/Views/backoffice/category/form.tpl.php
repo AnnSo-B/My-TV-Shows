@@ -1,6 +1,9 @@
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-list') ?>">Retour</a>
   <h2>Ajout d'une catégorie</h2>
+  <?php 
+    include __DIR__.'/../partials/session_messages.tpl.php';
+  ?>
   <form action="<?= $router->generate('backoffice-category-add-post') ?>" method="POST">
     <div class="form-group">
       <label for="name">Nom</label>

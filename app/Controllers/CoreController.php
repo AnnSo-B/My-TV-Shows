@@ -21,6 +21,17 @@ class CoreController {
         $viewVars['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
         $viewVars['baseUri'] = $_SERVER['BASE_URI'];
 
+        // if we have messages in session, 
+        if (isset($_SESSION['sessionMessages'])) {
+            // we'll want to display them so we send them to the view
+            $viewVars['sessionMessages'] = $_SESSION['sessionMessages'];
+            // and erase those messages from the session so that new ones can be saved 
+            unset($_SESSION['sessionMessages']);
+        } else {
+            // otherwise we keep an empty sessionMessages array
+            $viewVars['sessionMessages'] = [];
+        }
+
         // https://www.php.net/manual/fr/function.extract.php
         // extract transforms array keys into variables
         extract($viewVars);
