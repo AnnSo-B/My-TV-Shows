@@ -40,6 +40,7 @@ class CoreController {
             unset($_SESSION['formData']);
         } else {
             // otherwise we keep an empty formData array
+            $viewVars['formData']['id'] = '';
             $viewVars['formData']['name'] = '';
             $viewVars['formData']['description'] = '';
             $viewVars['formData']['picture'] = '';

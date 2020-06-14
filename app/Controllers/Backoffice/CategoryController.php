@@ -143,10 +143,16 @@ class CategoryController extends CoreController
         // get the category we want to update
         $category = CATEGORY::find($id);
 
+        // save the category in session to fill the form
+        $_SESSION['formData']['name'] = $category->getName();
+        $_SESSION['formData']['description'] = $category->getDescription();
+        $_SESSION['formData']['picture'] = $category->getPicture();
+        $_SESSION['formData']['status'] = intval($category->getStatus());
+
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form', ['elem' => $category]);
+        $this->show('backoffice', 'category/form', ['update' => true]);
 
     }
 }

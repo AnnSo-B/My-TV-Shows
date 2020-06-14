@@ -1,14 +1,18 @@
-<?php
-dump($elem);
-?>
-
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-list') ?>">Retour</a>
-  <h2>Ajout d'une catégorie</h2>
+  <h2><?= isset($update) && $update ? "Modification" : "Ajout" ?> d'une catégorie</h2>
   <?php 
     include __DIR__.'/../partials/session_messages.tpl.php';
   ?>
-  <form action="<?= $router->generate('backoffice-category-add-post') ?>" method="POST">
+  <form action="<?= isset($update) && $update ? "#" : $router->generate('backoffice-category-add-post') ?>" method="POST">
+    <?php if (isset($update) && $update) : ?>
+      <input
+        type="hidden"
+        id="id"
+        name="id"
+        value="<?= $backoffice['formData']['id'] ?>"
+      >
+    <?php endif ?>
     <div class="form-group">
       <label for="name">Nom</label>
       <input
@@ -17,7 +21,7 @@ dump($elem);
         id="name"
         aria-describedby="category-name"
         name="name"
-        value="<?= $formData['name'] !== '' ? $formData['name'] : "" ?>"
+        value="<?= $formData['name'] ?>"
       >
       <small id="category-name" class="form-text text-muted">64 caractères maximum</small>
     </div>
@@ -29,7 +33,7 @@ dump($elem);
         id="description"
         aria-describedby="category-description"
         name="description"
-        value="<?= $formData['description'] !== '' ? $formData['description'] : "" ?>"
+        value="<?= $formData['description'] ?>"
       >
       <small id="category-description" class="form-text text-muted">64 caractères maximum - Permettra de mettre une petite info sur la catégorie</small>
     </div>
@@ -41,7 +45,7 @@ dump($elem);
         id="picture"
         aria-describedby="category-picture"
         name="picture"
-        value="<?= $formData['picture'] !== '' ? $formData['picture'] : "" ?>"
+        value="<?= $formData['picture'] ?>"
       >
       <small id="category-picture" class="form-text text-muted">128 caractères maximum - Il s'agit ici du chemin vers l'image</small>
     </div>
