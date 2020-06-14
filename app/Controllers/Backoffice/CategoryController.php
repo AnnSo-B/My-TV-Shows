@@ -23,4 +23,16 @@ class CategoryController extends CoreController
         // we display the view and the list is sent
         $this->show('backoffice', 'category/list', ['list' => $categoryList]);
     }
+
+    /**
+     * Method to display the add form
+     * 
+     * @return void
+     */
+    public function add() {
+
+        // we display the form
+        // we'll use the same to add and update a category - conditional template
+        $this->show('backoffice', 'category/form');
+    }
 }

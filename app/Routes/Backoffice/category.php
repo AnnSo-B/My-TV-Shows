@@ -16,3 +16,17 @@ $router->map(
   ],
   'backoffice-category-list'
 );
+
+
+/**
+ * Route to add a new category form
+ */
+$router->map(
+  'GET',
+  '/backoffice/category/add',
+  [
+      'method' => 'add',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-add'
+);
