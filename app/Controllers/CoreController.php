@@ -32,6 +32,20 @@ class CoreController {
             $viewVars['sessionMessages'] = [];
         }
 
+        // if we have formData in session, 
+        if (isset($_SESSION['formData'])) {
+            // we'll want to display them so we send them to the view
+            $viewVars['formData'] = $_SESSION['formData'];
+            // and erase those messages from the session so that new ones can be saved 
+            unset($_SESSION['formData']);
+        } else {
+            // otherwise we keep an empty formData array
+            $viewVars['formData']['name'] = '';
+            $viewVars['formData']['description'] = '';
+            $viewVars['formData']['picture'] = '';
+            $viewVars['formData']['status'] = 0;
+        }
+
         // https://www.php.net/manual/fr/function.extract.php
         // extract transforms array keys into variables
         extract($viewVars);

@@ -84,6 +84,12 @@ class CategoryController extends CoreController
             }
         }
 
+        // save user data in session to display them in case of redirection to the form
+        $_SESSION['formData']['name'] = $name;
+        $_SESSION['formData']['description'] = $description;
+        $_SESSION['formData']['picture'] = $picture;
+        $_SESSION['formData']['status'] = $status;
+
         // if there are error, save the message in session and redirect to the form
         if (count($message) > 0) {
             // save messages

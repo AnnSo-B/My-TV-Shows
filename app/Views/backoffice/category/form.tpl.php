@@ -1,3 +1,7 @@
+<?php
+dump($formData);
+?>
+
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-list') ?>">Retour</a>
   <h2>Ajout d'une catégorie</h2>
