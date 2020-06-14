@@ -70,8 +70,21 @@ class CategoryController extends CoreController
         $newCategory->setPicture($picture);
         $newCategory->setStatus($status);
 
-        dump($newCategory);
-
         // insert entry
+        $success = $newCategory->insert();
+
+        // we need the router to redirect
+        global $router;
+        // to the list in case of success
+        // to the form in case of failure
+        if ($success) {
+            // TODO add message
+            $redirect = $router->generate('backoffice-category-list');
+        } else {
+            // TODO add message
+            $redirect = $router->generate('backoffice-category-add');
+        }
+        header("Location: " . $redirect);
+        exit();
     }
 }

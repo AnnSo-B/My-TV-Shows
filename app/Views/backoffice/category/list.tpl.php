@@ -1,7 +1,7 @@
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-add') ?>">Ajouter</a>
   <h2>Liste des catégories</h2>
-  <table class="table table-striped table-responsive">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>

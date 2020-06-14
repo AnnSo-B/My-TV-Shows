@@ -173,4 +173,36 @@ class Category extends CoreModel {
         // return it
         return $results;
     }
+        /**
+     * Method to insert a new category in DB
+     * 
+     * @return bool indicates the success or failure of the insertion
+     */
+    public function insert()
+    {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = "INSERT INTO `category`
+            (`name`, `description`, `picture`, `status`)
+            VALUES (:name, :description, :picture, :status)";
+
+        // prepare the request
+        $pdoStatement = $pdo->prepare($sql);
+
+        // execute the request
+        $success = $pdoStatement->execute([
+            ':name' => $this->name,
+            ':description' => $this->description,
+            ':picture' => $this->picture,
+            ':status' => $this->status
+        ]);
+
+        // check the insertion
+        if ($success) {
+            $this->id = $pdo->lastInsertId();
+        }
+        return $success;
+    }
 }
