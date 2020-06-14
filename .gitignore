@@ -1,2 +1,5 @@
+# to ignore : 
+
 docs
 vendor
+app/config.ini
