@@ -1,0 +1,7 @@
+{
+    "require": {
+        "symfony/var-dumper": "^5.1",
+        "altorouter/altorouter": "^2.0",
+        "benoclock/alto-dispatcher": "^1.1"
+    }
+}
