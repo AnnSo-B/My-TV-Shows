@@ -131,4 +131,20 @@ class CategoryController extends CoreController
         header("Location: " . $redirect);
         exit();
     }
+
+    /**
+     * Method to display the update form
+     * 
+     * @param int category Id
+     * @return void
+     */
+    public function update($id)
+    {
+        dump($id);
+        // for now we only display the form to test the route
+        // we display the form
+        // we'll use the same to add and update a category - conditional template
+        $this->show('backoffice', 'category/form');
+
+    }
 }

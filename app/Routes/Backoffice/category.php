@@ -43,3 +43,17 @@ $router->map(
   ],
   'backoffice-category-add-post'
 );
+
+
+/**
+ * Route to a form to update a category
+ */
+$router->map(
+  'GET',
+  '/backoffice/category/update/[i:id]',
+  [
+      'method' => 'update',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-update'
+);
