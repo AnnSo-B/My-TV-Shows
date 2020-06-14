@@ -7,6 +7,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Backoffice - e-boutique</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= $assetsBaseUri?>css/style.css">
+    <title>Backoffice - My TV-Shows</title>
   </head>
   <body>
+
+    <!-- include navigation -->    
+    <?php
+      include __DIR__.'/../partials/nav.tpl.php';
+    ?>
