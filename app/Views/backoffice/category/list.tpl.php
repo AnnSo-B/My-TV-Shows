@@ -8,7 +8,6 @@
         <th scope="col">Nom</th>
         <th scope="col">Description</th>
         <th scope="col">Image</th>
-        <th scope="col">Position page accueil</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -19,7 +18,6 @@
           <td><?= $elem->getName(); ?></td>
           <td><?= $elem->getDescription(); ?></td>
           <td><?= $elem->getPicture(); ?></td>
-          <td><?= $elem->getHomeOrder(); ?></td>
           <td>
             <!-- action buttons -->
             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
