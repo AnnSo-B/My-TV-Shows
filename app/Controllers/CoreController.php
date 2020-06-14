@@ -12,6 +12,10 @@ class CoreController {
      * @return void
      */
     protected function show(string $office, string $viewName, $viewVars = []) {
+
+        // we need the router
+        global $router;
+        
         // Data to be sent to every single page
         $viewVars['currentPage'] = $viewName; 
         $viewVars['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
