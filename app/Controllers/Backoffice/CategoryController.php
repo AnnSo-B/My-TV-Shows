@@ -18,9 +18,9 @@ class CategoryController extends CoreController
     {
 
         // We extract the list of cateogries from the DB
-        $categoryList = Category::findAll();
-
-        dump($categoryList);
-
+        $categoryList = Category::findAll();      
+        
+        // we display the view and the list is sent
+        $this->show('backoffice', 'category/list', ['list' => $categoryList]);
     }
 }
