@@ -1,7 +1,7 @@
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-list') ?>">Retour</a>
   <h2>Ajout d'une catégorie</h2>
-  <form action="#" method="POST">
+  <form action="<?= $router->generate('backoffice-category-add-post') ?>" method="POST">
     <div class="form-group">
       <label for="name">Nom</label>
       <input type="text" class="form-control" id="name" aria-describedby="category-name" name="name">

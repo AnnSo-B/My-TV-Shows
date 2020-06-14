@@ -30,3 +30,16 @@ $router->map(
   ],
   'backoffice-category-add'
 );
+
+/**
+ * Route to add a new category in DB
+ */
+$router->map(
+  'POST',
+  '/backoffice/category/add',
+  [
+      'method' => 'addPost',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-add-post'
+);
