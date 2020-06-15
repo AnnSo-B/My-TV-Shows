@@ -50,7 +50,7 @@ $match = $router->match();
 /**
  * Create an instanciation of Dispatcher
  */
-$dispatcher = new Dispatcher($match, 'App\Controllers\MainController');
+$dispatcher = new Dispatcher($match, 'App\Controllers\\Frontoffice\MainController::error404');
 
 /**
  * Execute dispatch method from Dispatcher class

@@ -1,3 +1,18 @@
+/* Frontoffice */
+.frontoffice-main__title {
+  text-align: center;
+}
+
+.error__title {
+  text-align: center;
+}
+
+.error__image {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Backoffice */
 .intro {
   text-align: center;
 }
