@@ -231,6 +231,11 @@
         </option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary"><?= isset($delete) && $delete ? "Supprimer" : "Envoyer" ?></button>
+    <button
+      type="submit"
+      class="btn btn-<?= isset($delete) && $delete ? "danger" : "primary" ?>"
+    >
+      <?= isset($delete) && $delete ? "Supprimer" : "Envoyer" ?>
+  </button>
   </form>
 </main>
