@@ -36,6 +36,12 @@
     ?>"
     method="POST"
   >
+    <input
+      type="hidden"
+      id="csrfToken"
+      name="csrfToken"
+      value="<?= $csrfToken ?>"
+    />
     <?php if (isset($elem)) : ?>
       <input
         type="hidden"

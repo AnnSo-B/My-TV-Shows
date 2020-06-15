@@ -17,5 +17,10 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Acteurs</a>
       </li>
+      <?php if ($_SESSION['userId']) : ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= $router->generate('frontoffice-user-logout') ?>">Déconnexion</a>
+        </li>
+      <?php endif ?>
   </div>
 </nav>

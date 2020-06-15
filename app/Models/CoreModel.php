@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
-class CoreModel {
+/**
+ * an abstract class is used to impose a pattern on all classes that inherit it
+ * the abstract methods it contains must appear as children's methods
+ */
+abstract class CoreModel {
 
     /************************************************************************\
     |                           Properties                                   |
@@ -82,5 +86,14 @@ class CoreModel {
 
         }
     }    
+    
+    /************************************************************************\
+    |                           Abstract Methods                             |
+    \************************************************************************/
+    abstract static public function findAll();
+    abstract static public function find($id);
+    abstract public function insert();
+    abstract public function update();
+    abstract public function delete();
 
 }

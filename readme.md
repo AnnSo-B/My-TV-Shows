@@ -15,11 +15,11 @@ Ce projet n'a pas vocation à être mis en ligne.
 - Backoffice :
   - accès au menu des données administrables depuis le backoffice
   - visualiser la liste des genres de séries, en ajouter, modifier et supprimer
+  - connexion au backoffice par un administrateur et déconnexion, protection grâce au profil utilisateur et aux token CSRF
 
 ### Quelques-unes à venir
 
 - Backoffice
-  - connexion au backoffice par un administrateur
   - visualiser la liste des acteurs, en ajouter, modifier et supprimer
   - visualiser la liste des séries, en ajouter, modifier et supprimer
   - associer des séries et des acteurs
