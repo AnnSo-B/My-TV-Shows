@@ -22,4 +22,15 @@ class UserController extends CoreController {
         );
     }
 
+    /**
+     * Method to check the log informations sent via the form and log eventually
+     * 
+     * @return void
+     */
+    public function loginPost() 
+    {
+        dump($_POST);
+        exit();
+    }
+
 }
