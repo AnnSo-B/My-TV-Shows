@@ -98,4 +98,18 @@ class UserController extends CoreController {
         // and redirect to the form
         header('Location: ' . $redirect);
     }
+
+    /**
+     * Method to log a user out
+     */
+    public function logout()
+    {
+        // we have to delete userId and userData from session
+        unset($_SESSION['userId']);
+        unset($_SESSION['userData']);
+
+        // redirect to login page
+      global $router;
+      header('Location: ' . $router->generate('frontoffice-user-login'));
+    }
 }

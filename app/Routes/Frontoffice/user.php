@@ -29,3 +29,16 @@ $router->map(
     ],
     'frontoffice-user-login-post'
 );
+
+/**
+ * Route to log user out
+ */
+$router->map(
+  'GET',
+  '/logout', 
+  [
+      'method' => 'logout',
+      'controller' => '\App\Controllers\Frontoffice\UserController'
+  ],
+  'frontoffice-user-logout'
+);
