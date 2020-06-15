@@ -142,17 +142,81 @@ class CategoryController extends CoreController
     {
         // get the category we want to update
         $category = CATEGORY::find($id);
-
-        // save the category in session to fill the form
-        $_SESSION['formData']['name'] = $category->getName();
-        $_SESSION['formData']['description'] = $category->getDescription();
-        $_SESSION['formData']['picture'] = $category->getPicture();
-        $_SESSION['formData']['status'] = intval($category->getStatus());
-
+    
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form', ['update' => true]);
-
+        $this->show('backoffice', 'category/form', ['elem' => $category]);
     }
+
+    /**
+     * Method to update a category in DB
+     * 
+     * @return void
+     */
+    public function updatePost()
+    {
+
+        // we need the router to redirect
+        global $router;
+
+        // data validation
+        // https://www.php.net/manual/fr/filter.filters.sanitize.php
+        if (isset($_POST)) {
+            if (array_key_exists('id', $_POST)) {
+                $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+            }
+            if (array_key_exists('name', $_POST)) {
+                $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+                // https://www.php.net/manual/fr/function.strlen.php
+                if (strlen($name) > 64) {
+                    $message['name_failure'] = 'Le nom d\'une catégorie ne peut excéder 64 caractères.';                
+                }
+                else if (strlen($name) < 1) {
+                    $message['name_failure'] = 'Merci d\'indiquer le nom de la catégorie.';                
+                }
+            }
+            if (array_key_exists('description', $_POST)) {
+                $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+                // https://www.php.net/manual/fr/function.strlen.php
+                if (strlen($description) > 64) {
+                    $message['description_failure'] = 'La description d\'une catégorie ne peut excéder 128 caractères.';
+                }
+            }
+            if (array_key_exists('picture', $_POST)) {
+                $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
+                // https://www.php.net/manual/fr/function.strlen.php
+                if (strlen($picture) > 128) {
+                    $message['picture_failure'] = 'La description d\'un produit ne peut excéder 128 caractères.';
+                }
+            }
+            if (array_key_exists('status', $_POST)) {
+                $status = filter_input(INPUT_POST, 'status', FILTER_VALIDATE_INT, [1, 2]);
+                // https://www.php.net/manual/fr/function.strlen.php
+                if (!$status) {
+                    $message['status_failure'] = 'Ce statut n\'est pas valide.';
+                }
+            }
+        }
+
+        // save user data in session to display them in case of redirection to the form
+        $_SESSION['formData']['id'] = $id;
+        $_SESSION['formData']['name'] = $name;
+        $_SESSION['formData']['description'] = $description;
+        $_SESSION['formData']['picture'] = $picture;
+        $_SESSION['formData']['status'] = $status;
+
+        // if there are error, save the message in session and redirect to the form
+        if (count($message) > 0) {
+            // save messages
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-update', ['id' => $id]));
+            exit();
+        }
+
+        // create entry
+
+    } 
 }

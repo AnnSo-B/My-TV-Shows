@@ -36,7 +36,7 @@ class CoreController {
         if (isset($_SESSION['formData'])) {
             // we'll want to display them so we send them to the view
             $viewVars['formData'] = $_SESSION['formData'];
-            // and erase those messages from the session so that new ones can be saved 
+            // and erase those data from the session so that new ones can be saved 
             unset($_SESSION['formData']);
         } else {
             // otherwise we keep an empty formData array

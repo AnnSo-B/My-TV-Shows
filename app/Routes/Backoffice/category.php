@@ -57,3 +57,17 @@ $router->map(
   ],
   'backoffice-category-update'
 );
+
+/**
+ * Route to update a category in DB
+ */
+$router->map(
+  'POST',
+  // the id is an hidden input
+  '/backoffice/category/update',
+  [
+      'method' => 'updatePost',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-update-post'
+);
