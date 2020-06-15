@@ -6,7 +6,7 @@
   <form action="<?= $router->generate('frontoffice-user-login-post') ?>" method="POST">
     <div class="form-group">
       <label for="email">E-mail</label>
-      <input type="email" class="form-control" id="email" aria-describedby="category-email" name="email" value="">
+      <input type="email" class="form-control" id="email" aria-describedby="category-email" name="email" value="<?= $formData['email'] ?>">
       <small id="category-email" class="form-text text-muted"></small>
     </div>
     <div class="form-group">

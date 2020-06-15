@@ -3,6 +3,7 @@
 namespace App\Controllers\Frontoffice;
 
 use App\Controllers\CoreController;
+use App\Models\User;
 
 class UserController extends CoreController {
     
@@ -29,8 +30,6 @@ class UserController extends CoreController {
      */
     public function loginPost() 
     {
-        dump($_POST);
-        
         // we'll need $router to redirect
         global $router;
 
@@ -49,10 +48,38 @@ class UserController extends CoreController {
         }
 
         // save user data in session - for security reason we only send the email back
-        $_SESSION['frontoffice']['formData']['email'] = $email;
-
+        $_SESSION['formData']['email'] = $email;
 
         // get the user in DB
+        $currentUser = User::findByEmail($email);
+
+        // if the user doesn't exist
+        if (!$currentUser) {
+            // we send a message
+            $message['unknow-email'] = 'Le mail ne correspond pas à un utilisateur connu. Merci de créer un compte ou vérifier le mail saisi.';
+
+            // save message in session
+            $_SESSION['sessionMessages'] = $message;
+
+            // and redirect to the form
+             header('Location: ' . $router->generate('frontoffice-user-login'));
+        }
+        // if the user exists
+        else {
+            // we have to check the password
+            // TODO : create a user and hash one password -> it'll change the way of checking the password
+            // if the password is not correct
+            if ($password !== $currentUser->getPassword()) {
+                // we send a message
+                $message['unknow-password'] = 'Le mot de passe est incorrect. Merci de le compléter à nouveau.';
+    
+                // save message in session
+                $_SESSION['sessionMessages'] = $message;
+    
+                // and redirect to the form
+                header('Location: ' . $router->generate('frontoffice-user-login'));
+            }
+        }
     }
 
 }

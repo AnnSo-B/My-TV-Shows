@@ -39,10 +39,11 @@ class CoreController {
             // and erase those data from the session so that new ones can be saved 
             unset($_SESSION['formData']);
         } else {
-            // otherwise we keep an empty formData array
+            // otherwise we keep an empty formData array which contains every input existing in the app to reset all the data in session
+            $viewVars['formData']['description'] = '';
+            $viewVars['formData']['email'] = '';
             $viewVars['formData']['id'] = '';
             $viewVars['formData']['name'] = '';
-            $viewVars['formData']['description'] = '';
             $viewVars['formData']['picture'] = '';
             $viewVars['formData']['status'] = 0;
         }

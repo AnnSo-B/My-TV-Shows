@@ -167,7 +167,7 @@ class User extends CoreModel {
      *
      * @return  int
      */ 
-    public function getRole_id()
+    public function getRoleId()
     {
         return $this->role_id;
     }
@@ -179,7 +179,7 @@ class User extends CoreModel {
      *
      * @return  self
      */ 
-    public function setRole_id(int $role_id)
+    public function setRoleId(int $role_id)
     {
         $this->role_id = $role_id;
 
@@ -194,4 +194,39 @@ class User extends CoreModel {
     public function insert() {}
     public function update() {}
     public function delete() {}
+
+    /************************************************************************\
+    |                              Own Methods                               |
+    \************************************************************************/
+
+    /**
+     * Method to get a user according to one email
+     *
+     * @param $email user send by the user
+     * @return User
+     */
+    static public function findByEmail($email) {
+
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = "SELECT * 
+            FROM `user` 
+            WHERE `email` = :email";
+
+        // prepare the request
+        $pdoStatement = $pdo->prepare($sql);
+
+        // execute the request
+        $pdoStatement->execute([
+            ':email' => $email
+        ]);
+
+        // prepare the results
+        $result = $pdoStatement->fetchObject(self::class);
+
+        // return it
+        return $result;
+    }
 }
