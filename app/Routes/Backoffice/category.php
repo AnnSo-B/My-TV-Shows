@@ -44,7 +44,6 @@ $router->map(
   'backoffice-category-add-post'
 );
 
-
 /**
  * Route to a form to update a category
  */
@@ -70,4 +69,17 @@ $router->map(
       'controller' => '\App\Controllers\Backoffice\CategoryController'
   ],
   'backoffice-category-update-post'
+);
+
+/**
+ * Route to a page displaying the category the user wants to delete
+ */
+$router->map(
+  'GET',
+  '/backoffice/category/delete/[i:id]',
+  [
+      'method' => 'delete',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-delete'
 );

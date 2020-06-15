@@ -1,11 +1,39 @@
 <main class="container my-4">
   <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-category-list') ?>">Retour</a>
-  <h2><?= isset($elem) ? "Modification" : "Ajout" ?> d'une catégorie</h2>
+  <h2>
+    <?php
+      // if delete is set and it returns true, the user wants to delete a category
+      if (isset($delete) && $delete) {
+        echo "Suppression";
+      } 
+      // if elem is set and delete is not set, the user wants to update a category
+      else if (isset($elem) && !isset($delete)) {
+        echo "Modification";
+      } 
+      // otherwise, the user wants to add a category
+      else {
+        echo "Ajout";
+      }  
+    ?> d'une catégorie
+  </h2>
   <?php 
     include __DIR__.'/../partials/session_messages.tpl.php';
   ?>
   <form
-    action="<?= isset($elem) ? $router->generate('backoffice-category-update-post') : $router->generate('backoffice-category-add-post') ?>"
+    action="<?php
+      // if delete is set and it returns true, the user wants to delete a category
+      if (isset($delete) && $delete) {
+        echo "#";
+      } 
+      // if elem is set and delete is not set, the user wants to update a category
+      else if (isset($elem) && !isset($delete)) {
+        echo $router->generate('backoffice-category-update-post');
+      } 
+      // otherwise, the user wants to add a category
+      else {
+        echo $router->generate('backoffice-category-add-post');
+      }  
+    ?>"
     method="POST"
   >
     <?php if (isset($elem)) : ?>
@@ -47,6 +75,12 @@
             }
           } 
         ?>"
+        <?php 
+          // if the user wants to delete the category, he can't change its
+          if (isset($delete) && $delete) {
+            echo "disabled";
+          } 
+        ?>
       >
       <small id="category-name" class="form-text text-muted">64 caractères maximum</small>
     </div>
@@ -77,6 +111,12 @@
             }
           } 
         ?>"
+        <?php 
+          // if the user wants to delete the category, he can't change its
+          if (isset($delete) && $delete) {
+            echo "disabled";
+          } 
+        ?>
       >
       <small id="category-description" class="form-text text-muted">64 caractères maximum - Permettra de mettre une petite info sur la catégorie</small>
     </div>
@@ -107,13 +147,28 @@
             }
           } 
         ?>"
+        <?php 
+          // if the user wants to delete the category, he can't change its
+          if (isset($delete) && $delete) {
+            echo "disabled";
+          } 
+        ?>
       >
       <small id="category-picture" class="form-text text-muted">128 caractères maximum - Il s'agit ici du chemin vers l'image</small>
     </div>
     <!-- Home order selection will have its own page -->
     <div class="form-group">
       <label for="status">Statut</label>
-      <select class="custom-select custom-select-lg mb-3" name="status">
+      <select
+        class="custom-select custom-select-lg mb-3"
+        name="status"
+        <?php 
+          // if the user wants to delete the category, he can't change its
+          if (isset($delete) && $delete) {
+            echo "disabled";
+          } 
+        ?>
+      >
         <option
           value="0"
           <?= !isset($elem) && $formData['status'] === 0 ? "selected" : "" ?>
@@ -176,6 +231,6 @@
         </option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <button type="submit" class="btn btn-primary"><?= isset($delete) && $delete ? "Supprimer" : "Envoyer" ?></button>
   </form>
 </main>

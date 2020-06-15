@@ -25,14 +25,7 @@
             <!-- action buttons -->
             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
               <a class="btn btn-warning mx-2" href="<?= $router->generate('backoffice-category-update', ['id' => $elem->getId()]) ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-              <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-danger mx-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="#">Oui, supprimer.</a>
-                </div>
-              </div>
+              <a class="btn btn-danger mx-2" href="<?= $router->generate('backoffice-category-delete', ['id' => $elem->getId()]) ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
             </div>
           </td>
         </tr>

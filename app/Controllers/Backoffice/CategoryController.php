@@ -254,4 +254,21 @@ class CategoryController extends CoreController
         header("Location: " . $redirect);
         exit();
     } 
+
+    /**
+     * Method to display the category the user wants to delete
+     * 
+     * @param int category Id
+     * @return void
+     */
+    public function delete($id)
+    {
+        // get the category we want to update
+        $category = CATEGORY::find($id);
+    
+        // for now we only display the form to test the route
+        // we display the form
+        // we'll use the same to add and update a category - conditional template
+        $this->show('backoffice', 'category/form', ['elem' => $category, "delete" => true]);
+    }
 }
