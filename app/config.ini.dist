@@ -1,0 +1,9 @@
+; TODO :
+;   - copy / paste this file, and rename the copy : config.ini
+;   - then in this confi.ini file, set a value to each parameter
+
+; base de données
+DB_HOST=
+DB_NAME=
+DB_USERNAME=
+DB_PASSWORD=

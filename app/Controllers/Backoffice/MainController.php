@@ -11,6 +11,12 @@ class MainController extends CoreController {
      * @return void
      */
     public function home() {  
-        $this->show('backoffice', 'main/home');
+        $this->show(
+            'backoffice',
+            'main/home',
+            [
+                'headTitle' => 'Accueil du Backoffice'
+            ]
+        );
     }
 }

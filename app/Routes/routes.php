@@ -9,3 +9,4 @@
 \************************************************************************/
 
 require_once __DIR__ . '/Backoffice/main.php';
+require_once __DIR__ . '/Backoffice/category.php';
