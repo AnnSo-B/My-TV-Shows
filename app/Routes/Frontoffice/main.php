@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Route to frontoffice homepage
+ * Route to error 404
  */
 $router->map(
     'GET',
@@ -11,4 +11,17 @@ $router->map(
         'controller' => '\App\Controllers\Frontoffice\MainController'
     ],
     'frontoffice-main-error404'
+);
+
+/**
+ * Route to error 403
+ */
+$router->map(
+    'GET',
+    '/error403',
+    [
+        'method' => 'error403',
+        'controller' => '\App\Controllers\Frontoffice\MainController'
+    ],
+    'frontoffice-main-error403'
 );

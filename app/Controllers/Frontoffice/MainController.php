@@ -5,8 +5,9 @@ namespace App\Controllers\Frontoffice;
 use App\Controllers\CoreController;
 
 class MainController extends CoreController {
+
     /**
-     * Method to display the backoffice homepage
+     * Method to display the 404 page
      *
      * @return void
      */
@@ -16,6 +17,21 @@ class MainController extends CoreController {
             'main/error404',
             [
                 'headTitle' => 'Erreur 404'
+            ]
+        );
+    }
+    
+    /**
+     * Method to display the 403 page
+     *
+     * @return void
+     */
+    public function error403() {  
+        $this->show(
+            'frontoffice',
+            'main/error403',
+            [
+                'headTitle' => 'Erreur 403'
             ]
         );
     }
