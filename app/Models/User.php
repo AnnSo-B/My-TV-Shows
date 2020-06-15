@@ -19,6 +19,22 @@ class User extends CoreModel {
      * @var string
      */
     private $password;
+    /**
+     * @var string
+     */
+    private $firstname;
+    /**
+     * @var string
+     */
+    private $lastname;
+    /**
+     * @var int
+     */
+    private $status;
+    /**
+     * @var int
+     */
+    private $role_id;
 
 
 
@@ -70,6 +86,102 @@ class User extends CoreModel {
     public function setPassword(string $password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstname
+     *
+     * @return  string
+     */ 
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set the value of firstname
+     *
+     * @param  string  $firstname
+     *
+     * @return  self
+     */ 
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastname
+     *
+     * @return  string
+     */ 
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set the value of lastname
+     *
+     * @param  string  $lastname
+     *
+     * @return  self
+     */ 
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     *
+     * @return  int
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @param  int  $status
+     *
+     * @return  self
+     */ 
+    public function setStatus(int $status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of role_id
+     *
+     * @return  int
+     */ 
+    public function getRole_id()
+    {
+        return $this->role_id;
+    }
+
+    /**
+     * Set the value of role_id
+     *
+     * @param  int  $role_id
+     *
+     * @return  self
+     */ 
+    public function setRole_id(int $role_id)
+    {
+        $this->role_id = $role_id;
 
         return $this;
     }
