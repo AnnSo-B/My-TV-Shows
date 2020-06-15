@@ -20,3 +20,5 @@
     <?php
       include __DIR__.'/../partials/nav.tpl.php';
     ?>
+    <main class="frontoffice-main">
+      <h1 class="frontoffice-main__title">My TV Shows</h1>
