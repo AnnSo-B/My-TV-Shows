@@ -145,6 +145,8 @@ class CategoryController extends CoreController
     {
         // get the category we want to update
         $category = CATEGORY::find($id);
+
+        // TODO --> redirection if category doesn't exists
     
         // for now we only display the form to test the route
         // we display the form
@@ -263,12 +265,84 @@ class CategoryController extends CoreController
      */
     public function delete($id)
     {
+        // we need the router to redirect
+        global $router;
+
         // get the category we want to update
         $category = CATEGORY::find($id);
+
+        // message and redirection if category doesn't exists
+        if (!$category) {
+            $message['failure'] = 'La catégorie que vous souhaitez supprimer n\'existe pas.';
+
+            // save message in session
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-list'));
+            exit();
+        }
     
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
         $this->show('backoffice', 'category/form', ['elem' => $category, "delete" => true]);
+    }
+
+    /**
+     * Method to delete a category
+     * 
+     * @param int category Id
+     * @return void
+     */
+    public function deletePost()
+    {
+        
+        // we need the router to redirect
+        global $router;
+
+        // data validation
+        // https://www.php.net/manual/fr/filter.filters.sanitize.php
+        if (isset($_POST)) {
+            if (array_key_exists('id', $_POST)) {
+                $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+            }
+        }    
+
+        // we need the category
+        $category = Category::find($id);
+
+        // message and redirection if category doesn't exists (a user has already deleted the cataegory the current user wants to delete for exemple)
+        if (!$category) {
+            $message['failure'] = 'La catégorie que vous souhaitez supprimer n\'existe pas.';
+
+            // save message in session
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-list'));
+            exit();
+        }
+
+        //delete category
+        $success = $category->delete();
+    
+        // to the list in case of success either way but we have to create message
+        if ($success) {
+            $message['success'] = 'La catégorie a été supprimée.';
+        } else {
+            $message['failure'] = 'La catégorie n\'a pu être supprimée. Merci de réessayer ultérieurement';
+        }
+    
+        // save message in session
+        if (count($message) > 0) {
+            $_SESSION['sessionMessages'] = $message;
+        }
+
+        // we need the router to redirect
+        global $router;
+        // redirect to the list of category
+        header("Location: " . $router->generate('backoffice-category-list'));
+        exit();
     }
 }

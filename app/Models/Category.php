@@ -267,4 +267,29 @@ class Category extends CoreModel {
         // check the update
         return $success;
     }
+
+    /**
+     * Method to delete a category
+     */
+    public function delete() {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = "DELETE
+            FROM `category`
+            WHERE `id` = :id
+        ";
+
+        // prepare the request
+        $pdoStatement = $pdo->prepare($sql);
+
+        // execute the request
+        $success = $pdoStatement->execute([
+            ':id' => $this->id
+        ]);
+
+        // check the update
+        return $success;
+    }
 }

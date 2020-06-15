@@ -23,7 +23,7 @@
     action="<?php
       // if delete is set and it returns true, the user wants to delete a category
       if (isset($delete) && $delete) {
-        echo "#";
+        echo $router->generate('backoffice-category-delete-post');
       } 
       // if elem is set and delete is not set, the user wants to update a category
       else if (isset($elem) && !isset($delete)) {

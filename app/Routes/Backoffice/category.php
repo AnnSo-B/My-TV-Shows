@@ -83,3 +83,17 @@ $router->map(
   ],
   'backoffice-category-delete'
 );
+
+/**
+ * Route to delete a category in DB
+ */
+$router->map(
+  'POST',
+  // the id is an hidden input
+  '/backoffice/category/delete',
+  [
+      'method' => 'deletePost',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-delete-post'
+);
