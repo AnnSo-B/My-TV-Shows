@@ -21,7 +21,14 @@ class CategoryController extends CoreController
         $categoryList = Category::findAll();      
         
         // we display the view and the list is sent
-        $this->show('backoffice', 'category/list', ['list' => $categoryList]);
+        $this->show(
+            'backoffice',
+            'category/list',
+            [
+                'headTitle' => 'Liste des catégories - Backoffice',
+                'list' => $categoryList
+            ]
+        );
     }
 
     /**
@@ -34,7 +41,13 @@ class CategoryController extends CoreController
 
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form');
+        $this->show(
+            'backoffice',
+            'category/form',
+            [
+                'headTitle' => 'Ajout d\'une catégorie - Backoffice'
+            ]
+        );
     }
 
     /**
@@ -164,7 +177,14 @@ class CategoryController extends CoreController
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form', ['elem' => $category]);
+        $this->show(
+            'backoffice',
+            'category/form',
+            [
+                'elem' => $category,
+                'headTitle' => 'Modification d\'une catégorie - Backoffice'
+            ]
+        );
     }
 
     /**
@@ -312,7 +332,15 @@ class CategoryController extends CoreController
         // for now we only display the form to test the route
         // we display the form
         // we'll use the same to add and update a category - conditional template
-        $this->show('backoffice', 'category/form', ['elem' => $category, "delete" => true]);
+        $this->show(
+            'backoffice',
+            'category/form',
+            [
+                'elem' => $category,
+                "delete" => true,
+                'headTitle' => 'Suppression d\'une catégorie - Backoffice'
+            ]
+        );
     }
 
     /**

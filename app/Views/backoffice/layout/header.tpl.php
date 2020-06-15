@@ -12,7 +12,7 @@
       integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= $assetsBaseUri?>css/style.css">
-    <title>Backoffice - My TV-Shows</title>
+    <title><?= $headTitle ?> - My TV-Shows</title>
   </head>
   <body>
 
