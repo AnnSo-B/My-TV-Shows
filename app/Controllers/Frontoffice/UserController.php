@@ -90,7 +90,8 @@ class UserController extends CoreController {
                     $redirect = $router->generate('backoffice-main-home');
                 }
                 else {
-                    // TODO : route to homepage to redirect there
+                    // redirect to homepage
+                    $redirect = $router->generate('frontoffice-main-home');
                 }
             }
         }
@@ -110,6 +111,6 @@ class UserController extends CoreController {
 
         // redirect to login page
       global $router;
-      header('Location: ' . $router->generate('frontoffice-user-login'));
+      header('Location: ' . $router->generate('frontoffice-main-home'));
     }
 }
