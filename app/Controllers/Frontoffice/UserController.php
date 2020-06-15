@@ -62,7 +62,7 @@ class UserController extends CoreController {
             $_SESSION['sessionMessages'] = $message;
 
             // and redirect to the form
-             header('Location: ' . $router->generate('frontoffice-user-login'));
+            $redirect = $router->generate('frontoffice-user-login');
         }
         // if the user exists
         else {
@@ -77,9 +77,25 @@ class UserController extends CoreController {
                 $_SESSION['sessionMessages'] = $message;
     
                 // and redirect to the form
-                header('Location: ' . $router->generate('frontoffice-user-login'));
+                $redirect = $router->generate('frontoffice-user-login');
+            }
+            // if it is correct
+            else {
+                // we save user data in session
+                $_SESSION['userId'] = $currentUser->getId();
+                $_SESSION['userData'] = $currentUser;
+
+                // redirect to home backoffice page if the user is an administrator otherwise to the homepage
+                if (intval($currentUser->getRoleId()) === 1) {
+                    $redirect = $router->generate('backoffice-main-home');
+                }
+                else {
+                    // TODO : route to homepage to redirect there
+                }
             }
         }
+                
+        // and redirect to the form
+        header('Location: ' . $redirect);
     }
-
 }
