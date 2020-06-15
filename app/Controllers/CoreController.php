@@ -125,14 +125,17 @@ class CoreController {
             }
             else {
                 // we want to redirect the user to the 403 error page
-                // TODO Create 403 error page
+                $redirect = $router->generate('frontoffice-main-error403');
             }
         }
         // if the user is not connected
         else {
             // redirect to the login form
-            header('Location: ' . $router->generate('frontoffice-user-login'));
+            $redirect = $router->generate('frontoffice-user-login');
         }
+
+        // redirection
+        header('Location: ' . $redirect);
     }
 
     /**
@@ -164,9 +167,8 @@ class CoreController {
 
         // if receive token is empty or different from the token saved in session
         if (empty($receivedToken) || $receivedToken !== $sessionToken) {
-            // we want to redirect the user to the 403 error page - remporary to login form to test
-            // TODO Create 403 error page
-            header('Location: ' . $router->generate('frontoffice-user-login'));
+            // we want to redirect the user to the 403 error page
+            header('Location: ' . $router->generate('frontoffice-main-error403'));
             exit();
         }
         // otherwise, it's ok
