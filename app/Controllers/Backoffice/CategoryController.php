@@ -48,6 +48,9 @@ class CategoryController extends CoreController
         // we need the router to redirect
         global $router;
 
+        // we need an array that'll contain messages
+        $message = [];
+
         // data validation
         // https://www.php.net/manual/fr/filter.filters.sanitize.php
         if (isset($_POST)) {
@@ -109,7 +112,7 @@ class CategoryController extends CoreController
         $newCategory->setStatus($status);
 
         // insert entry
-        $success = $newCategory->insert();
+        $success = $newCategory->save();
 
         // we need the router to redirect
         global $router;
@@ -159,6 +162,9 @@ class CategoryController extends CoreController
 
         // we need the router to redirect
         global $router;
+
+        // we need an array that'll contain messages
+        $message = [];
 
         // data validation
         // https://www.php.net/manual/fr/filter.filters.sanitize.php
@@ -216,7 +222,36 @@ class CategoryController extends CoreController
             exit();
         }
 
-        // create entry
+        // update entry
+        // find the entry
+        $currentCategory = Category::find($id);
+        // put a value on each property
+        $currentCategory->setName($name);
+        $currentCategory->setDescription($description);
+        $currentCategory->setPicture($picture);
+        $currentCategory->setStatus($status);
 
+        // insert entry
+        $success = $currentCategory->save();
+
+        // we need the router to redirect
+        global $router;
+        // to the list in case of success
+        // to the form in case of failure
+        if ($success) {
+            $message['success'] = 'La catégorie a été modifiée avec succés.';
+            $redirect = $router->generate('backoffice-category-list');
+        } else {
+            $message['failure'] = 'Une erreur est survenue lors de la modification de la catégorie. Merci d\'essayer ultérieurement.';
+            $redirect = $router->generate('backoffice-category-update', ['id' => $id]);
+        }
+
+        // save message in session
+        if (count($message) > 0) {
+            $_SESSION['sessionMessages'] = $message;
+        }
+
+        header("Location: " . $redirect);
+        exit();
     } 
 }

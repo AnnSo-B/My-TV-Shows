@@ -57,5 +57,30 @@ class CoreModel {
     /************************************************************************\
     |                                 Methods                                |
     \************************************************************************/
+    /**
+     * Check if this entry has an id
+     * 
+     * @return bool true if the entry has an id
+     */
+    public function alreadyExists() 
+    {
+        return $this->id > 0;
+    }
+
+    /**
+     * Method to save the entry
+     */
+    public function save()
+    {
+        // if the entry has an id it already exists
+        if ($this->alreadyExists()) {
+            // so we execute the update method
+            return $this->update();
+        } else {
+            // otherwise we execute the insert method
+            return $this->insert();
+
+        }
+    }    
 
 }

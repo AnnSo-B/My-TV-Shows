@@ -229,4 +229,42 @@ class Category extends CoreModel {
         }
         return $success;
     }
+
+    /**
+     * Method to update a category in DB
+     * 
+     * @return bool indicates the success or failure of the insertion
+     */
+    public function update()
+    {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = "UPDATE `category`
+            SET `name` = :name, 
+                `description` = :description, 
+                `picture` = :picture, 
+                `status` = :status, 
+                `home_order` = :home_order, 
+                `updated_at` = NOW()
+            WHERE `id` = :id
+        ";
+
+        // prepare the request
+        $pdoStatement = $pdo->prepare($sql);
+
+        // execute the request
+        $success = $pdoStatement->execute([
+            ':name' => $this->name,
+            ':description' => $this->description,
+            ':picture' => $this->picture,
+            ':status' => $this->status,
+            ':home_order' => $this->home_order,
+            ':id' => $this->id
+        ]);
+
+        // check the update
+        return $success;
+    }
 }
