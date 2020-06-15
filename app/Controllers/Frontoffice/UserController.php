@@ -30,7 +30,29 @@ class UserController extends CoreController {
     public function loginPost() 
     {
         dump($_POST);
-        exit();
+        
+        // we'll need $router to redirect
+        global $router;
+
+        // and an array to contain messages
+        $message = [];
+
+        // data validation
+        // https://www.php.net/manual/fr/filter.filters.sanitize.php
+        if (isset($_POST)) {
+            if (array_key_exists('email', $_POST)) {
+                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            }
+            if (array_key_exists('password', $_POST)) {
+                $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            }
+        }
+
+        // save user data in session - for security reason we only send the email back
+        $_SESSION['frontoffice']['formData']['email'] = $email;
+
+
+        // get the user in DB
     }
 
 }
