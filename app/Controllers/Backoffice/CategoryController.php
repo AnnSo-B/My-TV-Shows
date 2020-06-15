@@ -143,10 +143,23 @@ class CategoryController extends CoreController
      */
     public function update($id)
     {
+        // we need the router to redirect
+        global $router;
+
         // get the category we want to update
         $category = CATEGORY::find($id);
 
-        // TODO --> redirection if category doesn't exists
+        // message and redirection if category doesn't exists 
+        if (!$category) {
+            $message['failure'] = 'La catégorie que vous souhaitez modifier n\'existe pas.';
+
+            // save message in session
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-list'));
+            exit();
+        }
     
         // for now we only display the form to test the route
         // we display the form
@@ -227,6 +240,19 @@ class CategoryController extends CoreController
         // update entry
         // find the entry
         $currentCategory = Category::find($id);
+
+        // message and redirection if category doesn't exists (a user has deleted the category while the current user is trying to update it for exemple)
+        if (!$currentCategory) {
+            $message['failure'] = 'La catégorie que vous souhaitez modifier n\'existe plus.';
+
+            // save message in session
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-list'));
+            exit();
+        }
+
         // put a value on each property
         $currentCategory->setName($name);
         $currentCategory->setDescription($description);
@@ -314,7 +340,7 @@ class CategoryController extends CoreController
 
         // message and redirection if category doesn't exists (a user has already deleted the cataegory the current user wants to delete for exemple)
         if (!$category) {
-            $message['failure'] = 'La catégorie que vous souhaitez supprimer n\'existe pas.';
+            $message['failure'] = 'La catégorie que vous souhaitez supprimer n\'existe plus.';
 
             // save message in session
             $_SESSION['sessionMessages'] = $message;
