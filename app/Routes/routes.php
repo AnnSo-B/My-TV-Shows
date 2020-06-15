@@ -10,3 +10,9 @@
 
 require_once __DIR__ . '/Backoffice/main.php';
 require_once __DIR__ . '/Backoffice/category.php';
+
+/************************************************************************\
+|                          Frontoffice Routes                             |
+\************************************************************************/
+
+require_once __DIR__ . '/Frontoffice/user.php';
