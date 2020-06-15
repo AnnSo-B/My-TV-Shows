@@ -24,6 +24,22 @@ class CoreController {
             // checkAuthorization needs the list as argument
             $this->checkAuthorization($controlList[$currentRoute]);
         }
+
+        // * check the token
+        // List of CSRF protected Router
+        require __DIR__ . '../../Routes/csrfProtectedRoute.php';
+        
+        // if the route is protected by token 
+        if (in_array($currentRoute, $csrfProtectedRoute)) {
+            // get the token send by the previous view
+            if (isset($_GET['csrfToken'])) {
+                $receivedToken = $_GET['csrfToken'];
+            } else if (isset($_POST['csrfToken'])) {
+                $receivedToken = $_POST['csrfToken'];
+            }
+            // and check the token
+            $this->checkCsrfToken($receivedToken);
+        }
     }
 
 
@@ -35,7 +51,8 @@ class CoreController {
      * @param array $viewVars Array of data to be sent to the view
      * @return void
      */
-    protected function show(string $office, string $viewName, $viewVars = []) {
+    protected function show(string $office, string $viewName, $viewVars = []) 
+    {
 
         // we need the router
         global $router;
@@ -44,6 +61,12 @@ class CoreController {
         $viewVars['currentPage'] = $viewName; 
         $viewVars['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
         $viewVars['baseUri'] = $_SERVER['BASE_URI'];
+
+        //* Token generation
+        // create one
+        $this->generateCsrfToken();
+        // and send it to the view
+        $viewVars['csrfToken'] = $_SESSION['csrfToken'];
 
         //* if we have messages in session, 
         if (isset($_SESSION['sessionMessages'])) {
@@ -109,6 +132,47 @@ class CoreController {
         else {
             // redirect to the login form
             header('Location: ' . $router->generate('frontoffice-user-login'));
+        }
+    }
+
+    /**
+     * Method to generate a random CSRF Token
+     *
+     * @return string
+     */
+    private function generateCsrfToken()
+    {
+        // https://www.php.net/manual/fr/function.uniqid.php
+        // https://www.php.net/manual/fr/function.bin2hex
+        $_SESSION['csrfToken'] = uniqid(rand(), true) . bin2hex(random_bytes(32)) . uniqid(rand(), true);
+
+        return $_SESSION['csrfToken'];
+    }
+
+    /**
+     * Method to check CSRF Token
+     * 
+     * @return
+     */
+    private function checkCsrfToken($receivedToken) 
+    {
+        // we need the router
+        global $router;
+
+        // we retrieve the token in session
+        $sessionToken = $_SESSION['csrfToken'];
+
+        // if receive token is empty or different from the token saved in session
+        if (empty($receivedToken) || $receivedToken !== $sessionToken) {
+            // we want to redirect the user to the 403 error page - remporary to login form to test
+            // TODO Create 403 error page
+            header('Location: ' . $router->generate('frontoffice-user-login'));
+            exit();
+        }
+        // otherwise, it's ok
+        else {
+            // we delete the token in session and a new one will be created the next time a page will be constructed
+            unset($_SESSION['csrfToken']);
         }
     }
 }

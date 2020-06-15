@@ -4,6 +4,7 @@
     include __DIR__.'/../partials/session_messages.tpl.php';
   ?>
   <form action="<?= $router->generate('frontoffice-user-login-post') ?>" method="POST">
+    <input type="hidden" id="csrfToken" name="csrfToken" value="<?= $csrfToken ?>"/>
     <div class="form-group">
       <label for="email">E-mail</label>
       <input type="email" class="form-control" id="email" aria-describedby="category-email" name="email" value="<?= $formData['email'] ?>">
