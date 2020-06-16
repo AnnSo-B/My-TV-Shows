@@ -97,3 +97,16 @@ $router->map(
   ],
   'backoffice-category-delete-post'
 );
+
+/**
+ * Route to select the 5 categories displayed in frontoffice homepage
+ */
+$router->map(
+  'GET',
+  '/backoffice/category/selection',
+  [
+      'method' => 'selection',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-selection'
+);
