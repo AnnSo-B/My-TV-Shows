@@ -448,6 +448,9 @@ class CategoryController extends CoreController
         // we save the received data
         $selection = $_POST['home_order'];
 
+        // save user data in session to display them in case of redirection to the form
+        $_SESSION['formData']['homeCategorySelection'] = $selection;
+
         // check that the 5 selections are ok
         if (in_array("", $selection)) {
             // send a message

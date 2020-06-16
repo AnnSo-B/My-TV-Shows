@@ -89,6 +89,7 @@ class CoreController {
             // otherwise we keep an empty formData array which contains every input existing in the app to reset all the data in session
             $viewVars['formData']['description'] = '';
             $viewVars['formData']['email'] = '';
+            $viewVars['formData']['homeCategorySelection'] = [];
             $viewVars['formData']['id'] = '';
             $viewVars['formData']['name'] = '';
             $viewVars['formData']['picture'] = '';
