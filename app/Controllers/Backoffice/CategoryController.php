@@ -399,4 +399,26 @@ class CategoryController extends CoreController
         header("Location: " . $router->generate('backoffice-category-list'));
         exit();
     }
+
+    /**
+     * Method to display the category selection page
+     *
+     * @return void
+     */
+    public function selection()
+    {
+
+        // We extract the list of cateogries from the DB
+        $categoryList = Category::findAll();      
+        
+        // we display the view and the list is sent
+        $this->show(
+            'backoffice',
+            'category/selection',
+            [
+                'headTitle' => 'Sélection des catégories - Backoffice',
+                'list' => $categoryList
+            ]
+        );
+    }
 }
