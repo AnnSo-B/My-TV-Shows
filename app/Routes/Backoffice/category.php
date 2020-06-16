@@ -110,3 +110,16 @@ $router->map(
   ],
   'backoffice-category-selection'
 );
+
+/**
+ * Route to save the 5 selected categories id DB
+ */
+$router->map(
+  'POST',
+  '/backoffice/category/selection-post',
+  [
+      'method' => 'selectionPost',
+      'controller' => '\App\Controllers\Backoffice\CategoryController'
+  ],
+  'backoffice-category-selection-post'
+);

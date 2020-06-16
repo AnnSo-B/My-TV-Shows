@@ -421,4 +421,59 @@ class CategoryController extends CoreController
             ]
         );
     }
+
+    /**
+     * Method to save the category selection in DB
+     *
+     * @return void
+     */
+    public function selectionPost()
+    {
+        
+        // we need the router to redirect
+        global $router;
+
+        // we need an array that'll contain messages
+        $message = [];
+
+        // data validation
+        // https://www.php.net/manual/fr/function.filter-input-array.php
+        // https://www.php.net/manual/fr/filter.filters.sanitize.php
+        // if the table does not contain only integers between 1 and 5
+        if (!(filter_input_array(INPUT_POST, ['home_order' => FILTER_VALIDATE_INT]))) {
+            // send a message
+            $message['array-error'] = 'Le formulaire ne retourne pas les informations attendues. Merci de vérifier votre sélection.';
+        }
+
+        // we save the received data
+        $selection = $_POST['home_order'];
+
+        // check that the 5 selections are ok
+        if (in_array("", $selection)) {
+            // send a message
+            $message['selection-error'] = 'Merci de selectionner les 5 catégories';
+        }
+
+        // check an entry has only been selected once
+        // https://www.php.net/manual/fr/function.array-unique.php
+        $arrayUnique = array_unique($selection, SORT_NUMERIC);
+        // if the array without duplicate values is smaller than the array received from form
+        if (count($arrayUnique) < count($selection)) {
+            // it means that at least one category has been selected several times
+            // so we send a message
+            $message['duplicate-value-error'] = 'Au moins une catégorie a été sélectionnée plusieurs fois.';
+        }
+
+        // if there are error, save the message in session and redirect to the form
+        if (count($message) > 0) {
+            // save messages
+            $_SESSION['sessionMessages'] = $message;
+
+            // redirect
+            header("Location: " . $router->generate('backoffice-category-selection'));
+            exit();
+        }
+
+
+    }
 }

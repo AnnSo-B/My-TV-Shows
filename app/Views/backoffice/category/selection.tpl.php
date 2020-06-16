@@ -4,15 +4,15 @@
   <?php 
     include __DIR__.'/../partials/session_messages.tpl.php';
   ?>
-  <form action="" method="POST">
+  <form action="<?= $router->generate('backoffice-category-selection-post') ?>" method="POST">
     <input type="hidden" id="csrfToken" name="csrfToken" value="<?= $csrfToken ?>"/>
 
     <div class="row">
       <div class="col">
         <div class="form-group">
           <label for="home-order-1">1ère catégorie</label>
-          <select class="form-control" id="home-order-1" name="home-order[]">
-            <option value="0">A sélectionner</option>
+          <select class="form-control" id="home-order-1" name="home_order[]">
+            <option value="">A sélectionner</option>
             <?php foreach ($list as $elem) : ?>
               <option
                 value="<?= $elem->getId() ?>"
@@ -27,8 +27,8 @@
       <div class="col">
         <div class="form-group">
           <label for="home-order-2">2nde catégorie</label>
-          <select class="form-control" id="home-order-2" name="home-order[]">
-            <option value="0">A sélectionner</option>
+          <select class="form-control" id="home-order-2" name="home_order[]">
+            <option value="">A sélectionner</option>
             <?php foreach ($list as $elem) : ?>
               <option
                 value="<?= $elem->getId() ?>"
@@ -46,8 +46,8 @@
       <div class="col">
         <div class="form-group">
           <label for="home-order-3">3ème catégorie</label>
-          <select class="form-control" id="home-order-3" name="home-order[]">
-            <option value="0">A sélectionner</option>
+          <select class="form-control" id="home-order-3" name="home_order[]">
+            <option value="">A sélectionner</option>
             <?php foreach ($list as $elem) : ?>
               <option
                 value="<?= $elem->getId() ?>"
@@ -62,8 +62,8 @@
       <div class="col">
         <div class="form-group">
           <label for="home-order-4">4ème catégorie</label>
-          <select class="form-control" id="home-order-4" name="home-order[]">
-            <option value="0">A sélectionner</option>
+          <select class="form-control" id="home-order-4" name="home_order[]">
+            <option value="">A sélectionner</option>
             <?php foreach ($list as $elem) : ?>
               <option
                 value="<?= $elem->getId() ?>"
@@ -78,8 +78,8 @@
       <div class="col">
         <div class="form-group">
           <label for="home-order-5">5ème catégorie</label>
-          <select class="form-control" id="home-order-5" name="home-order[]">
-            <option value="0">A sélectionner</option>
+          <select class="form-control" id="home-order-5" name="home_order[]">
+            <option value="">A sélectionner</option>
             <?php foreach ($list as $elem) : ?>
               <option
                 value="<?= $elem->getId() ?>"
