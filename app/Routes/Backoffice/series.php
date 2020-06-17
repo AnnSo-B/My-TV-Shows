@@ -97,29 +97,3 @@ $router->map(
   ],
   'backoffice-series-delete-post'
 );
-
-/**
- * Route to select the 5 categories displayed in frontoffice homepage
- */
-$router->map(
-  'GET',
-  '/backoffice/series/selection',
-  [
-      'method' => 'selection',
-      'controller' => '\App\Controllers\Backoffice\SeriesController'
-  ],
-  'backoffice-series-selection'
-);
-
-/**
- * Route to save the 5 selected categories id DB
- */
-$router->map(
-  'POST',
-  '/backoffice/series/selection-post',
-  [
-      'method' => 'selectionPost',
-      'controller' => '\App\Controllers\Backoffice\SeriesController'
-  ],
-  'backoffice-series-selection-post'
-);
