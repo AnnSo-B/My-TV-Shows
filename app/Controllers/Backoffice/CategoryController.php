@@ -429,10 +429,6 @@ class CategoryController extends CoreController
      */
     public function selectionPost()
     {
-        
-        // we need the router to redirect
-        global $router;
-
         // we need an array that'll contain messages
         $message = [];
 
@@ -466,6 +462,9 @@ class CategoryController extends CoreController
             // so we send a message
             $message['duplicate-value-error'] = 'Au moins une catégorie a été sélectionnée plusieurs fois.';
         }
+        
+        // we need the router to redirect
+        global $router;
 
         // if there are error, save the message in session and redirect to the form
         if (count($message) > 0) {
@@ -476,6 +475,45 @@ class CategoryController extends CoreController
             header("Location: " . $router->generate('backoffice-category-selection'));
             exit();
         }
+
+        // in order to change the categories' homepage order, we need to :
+        // reset home_order of all categories to 0 in DB
+        $categoryList = Category::findAll();
+        foreach ($categoryList as $category) {
+            $category->setHomeOrder(0);
+            $category->update();
+        }
+
+        // set the new home_order to every impacted category in DB
+        // we init the value of the home order
+        $homeOrder = 1;
+        // for each category reveived in POST
+        foreach ($selection as $categoryId) {
+            // we get the object
+            $currentCategory = Category::find($categoryId);
+            // we update its order
+            $currentCategory->setHomeOrder($homeOrder);
+            // we update the current category
+            $success = $currentCategory->update();
+            // we increment the home order for the next loop
+            $homeOrder++;
+        }
+
+        // we send a message of success or failure and redirect to selection page
+        if ($success) {
+            $message['success'] = 'L\'ordre des catégories de la page d\'accueil a été mis à jour avec succès.';
+        } else {
+            $message['failure'] = 'Une erreur est survenue lors de la modification de l\'ordre des catégories. Merci d\'essayer ultérieurement.';
+        }
+
+        // save message in session
+        if (count($message) > 0) {
+            $_SESSION['sessionMessages'] = $message;
+        }
+
+        header("Location: " . $router->generate('backoffice-category-selection'));
+        exit();
+
 
 
     }
