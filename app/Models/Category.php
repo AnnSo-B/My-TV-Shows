@@ -162,7 +162,7 @@ class Category extends CoreModel {
         $pdo = Database::getPDO();
 
         // write the request
-        $sql = 'SELECT * FROM `category`';
+        $sql = 'SELECT * FROM `category` ORDER BY `name` ASC';
 
         // execute the request
         $pdoStatement = $pdo->query($sql);
