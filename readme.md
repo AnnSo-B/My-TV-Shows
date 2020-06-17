@@ -16,6 +16,7 @@ Ce projet n'a pas vocation à être mis en ligne.
   - accès au menu des données administrables depuis le backoffice
   - visualiser la liste des genres de séries, en ajouter, modifier et supprimer
   - connexion au backoffice par un administrateur et déconnexion, protection grâce au profil utilisateur et aux token CSRF
+  - sélectionner les catégories de séries qui seront affichées sur la page d'accueil
 
 ### Quelques-unes à venir
 
