@@ -93,7 +93,11 @@ class CoreController {
             $viewVars['formData']['id'] = '';
             $viewVars['formData']['name'] = '';
             $viewVars['formData']['picture'] = '';
+            $viewVars['formData']['releaseYear'] = null;
             $viewVars['formData']['status'] = 0;
+            $viewVars['formData']['seriesCategory'] = 0;
+            $viewVars['formData']['synopsis'] = null;
+            $viewVars['formData']['title'] = '';
         }
 
         //* extract transforms array keys into variables
