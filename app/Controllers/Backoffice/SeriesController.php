@@ -2,12 +2,12 @@
 
 namespace App\Controllers\Backoffice;
 
-use App\Controllers\CoreController;
+use App\Controllers\Backoffice\BackofficeController;
 use App\Models\Category;
 use App\Models\Series;
 
 
-class SeriesController extends CoreController
+class SeriesController extends BackofficeController
 {
 
     /**
