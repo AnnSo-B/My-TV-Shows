@@ -2,11 +2,11 @@
 
 namespace App\Controllers\Backoffice;
 
-use App\Controllers\CoreController;
+use App\Controllers\Backoffice\BackofficeController;
 use App\Models\Category;
 
 
-class CategoryController extends CoreController
+class CategoryController extends BackofficeController
 {
 
     /**

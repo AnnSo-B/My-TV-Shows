@@ -9,7 +9,7 @@
         <a class="nav-link" href="<?= $router->generate('backoffice-main-home') ?>">Accueil <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Séries</a>
+        <a class="nav-link" href="<?= $router->generate('backoffice-series-list') ?>">Séries</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= $router->generate('backoffice-category-list') ?>">Catégories</a>
