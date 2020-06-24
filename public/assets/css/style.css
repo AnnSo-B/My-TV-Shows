@@ -118,3 +118,34 @@
 .selection-button {
   width: 250px;
 }
+
+@media screen AND (min-width: 1024px) {
+  .app {
+    overflow-x: unset;
+  }
+
+  .frontoffice-nav {
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    width: 100vw;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .nav-links {
+    position: unset;
+    transform: unset;
+    height: 8vh;
+    width: 60%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    opacity: 1;
+    color: white;
+  }
+}
