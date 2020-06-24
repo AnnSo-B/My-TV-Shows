@@ -1,4 +1,98 @@
-/* Frontoffice */
+/* frontoffice */
+.app {
+  background-color: #8C2756;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Frontoffice navigation */
+.frontoffice-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #262626;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+  color: rgb(226, 226, 226);
+  letter-spacing: 1.5px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  position: fixed;
+  right: 0px;
+  height: 92vh;
+  top: 8vh;
+  background-color: #262626;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in;
+}
+
+/* toggle the nav */
+.nav-active {
+  transform: translateX(0%);
+}
+
+/* links */
+.nav-link {
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  font-size: 1em
+}
+
+.nav-item {
+  opacity: 0;
+}
+
+/* nav items animations */
+@keyframes navLinkFade {
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* button to open menu */
+.burger {
+  display: block;
+  cursor: pointer;
+}
+
+.burger div{
+  width: 25px;
+  height: 3px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* burger lines */
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;  
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Frontoffice home.tpl.php*/
 .frontoffice-main__title {
   text-align: center;
 }
@@ -12,7 +106,7 @@
   margin: 0 auto;
 }
 
-/* Backoffice */
+/* Backoffice home.tpl.php*/
 .intro {
   text-align: center;
 }
