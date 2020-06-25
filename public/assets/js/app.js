@@ -23,7 +23,7 @@ const app = {
 
   // method to animate the links
   animateLinks: () => {
-    const links = document.querySelectorAll('.nav-item');
+    const links = document.querySelectorAll('.front-nav-item');
 
     links.forEach((link, index) => {
       if (link.style.animation) {

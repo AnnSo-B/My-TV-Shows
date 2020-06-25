@@ -17,9 +17,14 @@
 
 .logo {
   color: rgb(226, 226, 226);
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   font-size: 1.5em;
   font-weight: bold;
+}
+
+.logo:hover,
+.nav-link:hover {
+  color: #BF4E83;
 }
 
 .nav-links {
@@ -46,10 +51,11 @@
 .nav-link {
   color: rgb(226, 226, 226);
   text-decoration: none;
-  font-size: 1em
+  font-size: 0.9em;
+  letter-spacing: 1.2px;
 }
 
-.nav-item {
+.front-nav-item {
   opacity: 0;
 }
 
@@ -139,12 +145,12 @@
     position: unset;
     transform: unset;
     height: 8vh;
-    width: 60%;
+    width: 80%;
     flex-direction: row;
     justify-content: space-around;
   }
 
-  .nav-item {
+  .front-nav-item {
     opacity: 1;
     color: white;
   }
