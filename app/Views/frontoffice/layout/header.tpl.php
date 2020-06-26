@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= $assetsBaseUri?>css/reset.css">
     <link rel="stylesheet" href="<?= $assetsBaseUri?>css/style.css">
-    <title><?= $headTitle ?> - My TV-Shows</title>
+    <title><?= $headTitle ?> My TV-Shows</title>
   </head>
   <body>
 

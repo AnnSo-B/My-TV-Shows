@@ -3,6 +3,7 @@
   background-color: #8C2756;
   min-height: 100vh;
   overflow-x: hidden;
+  color: rgb(226, 226, 226);
 }
 
 /* Frontoffice navigation */
@@ -53,6 +54,7 @@
   text-decoration: none;
   font-size: 0.9em;
   letter-spacing: 1.2px;
+  text-align: center;
 }
 
 .front-nav-item {
@@ -99,8 +101,18 @@
 }
 
 /* Frontoffice home.tpl.php*/
-.frontoffice-main__title {
+.frontoffice-intro {
   text-align: center;
+  margin: 1em;
+}
+
+.frontoffice-intro__title {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.frontoffice-intro__info {
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
 
 .error__title {
