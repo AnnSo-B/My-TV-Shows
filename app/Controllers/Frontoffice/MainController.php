@@ -3,6 +3,7 @@
 namespace App\Controllers\Frontoffice;
 
 use App\Controllers\CoreController;
+use App\Models\Series;
 
 class MainController extends CoreController {
 
@@ -12,11 +13,15 @@ class MainController extends CoreController {
      * @return void
      */
     public function home() {  
+        // get the 5 latest series
+        $latestSeries = Series::findLatestSeries();
+
         $this->show(
             'frontoffice',
             'main/home',
             [
-                'headTitle' => 'Bienvenue sur '
+                'headTitle' => 'Bienvenue sur ',
+                'latestSeries' => $latestSeries
             ]
         );
     }

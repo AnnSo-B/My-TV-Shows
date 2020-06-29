@@ -1,13 +1,14 @@
 /* frontoffice */
 .app {
-  background-color: #8C2756;
-  min-height: 100vh;
   overflow-x: hidden;
   color: rgb(226, 226, 226);
 }
 
 /* Frontoffice navigation */
 .frontoffice-nav {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -30,6 +31,7 @@
 
 .nav-links {
   position: fixed;
+  z-index: 99;
   right: 0px;
   height: 92vh;
   top: 8vh;
@@ -101,9 +103,15 @@
 }
 
 /* Frontoffice home.tpl.php*/
+.frontoffice-main {
+  position: absolute;
+  top: 8vh;
+  background-color: #8C2756;
+}
+
 .frontoffice-intro {
   text-align: center;
-  margin: 1em;
+  margin: 1em 1.5em 2em 1.5em;
 }
 
 .frontoffice-intro__title {
@@ -135,6 +143,33 @@
 
 .selection-button {
   width: 250px;
+}
+
+.frontoffice__home-section__title {
+  font-size: 1.6em;
+  text-align: center;
+  border: 2px solid rgb(226, 226, 226);
+  width: 90%;
+  margin: 0 auto;
+  padding: .5em;
+}
+
+.frontoffice__home-article {
+  width: 300px;
+  margin: 2em auto;
+  position: relative;
+}
+
+.frontoffice__home-article__image {
+  width: 100%;
+}
+
+.frontoffice__home-article__title {
+  font-size: 1.5em;
+  color: rgb(226, 226, 226);
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 
 @media screen AND (min-width: 1024px) {
