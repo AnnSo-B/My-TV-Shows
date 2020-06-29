@@ -175,6 +175,32 @@ class Category extends CoreModel {
     }
 
     /**
+     * Method to find homepage categories
+     * 
+     * @return Category[]
+     */
+    static public function findHomepageCategories()
+    {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = 'SELECT * 
+            FROM `category`
+            WHERE `home_order` > 0
+            ORDER BY `home_order` ASC';
+
+        // execute the request
+        $pdoStatement = $pdo->query($sql);
+
+        // prepare the results
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        // return it
+        return $results;
+    }
+
+    /**
      * Method to find a category acording to its id
      */
     static public function find($id)

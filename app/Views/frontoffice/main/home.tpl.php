@@ -20,3 +20,21 @@
     </article>
   <?php endforeach ?>
 </section>
+
+<section>
+  <h2 class="frontoffice__home-section__title">Les catégories à la une</h2>
+  <?php foreach ($homepageCategories as $category) : ?>
+    <article class="frontoffice__home-article">
+      <a href="">
+        <img
+          class="frontoffice__home-article__image"
+          src="<?= $assetsBaseUri ?><?= $category->getPicture() ?>"
+          alt="<?= $category->getName() ?>"
+        >
+        <h3 class="frontoffice__home-article__title">
+          <?= $category->getName() ?>
+        </h3>
+      </a>
+    </article>
+  <?php endforeach ?>
+</section>

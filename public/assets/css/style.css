@@ -150,7 +150,7 @@
   text-align: center;
   border: 2px solid rgb(226, 226, 226);
   width: 90%;
-  margin: 0 auto;
+  margin: 2em auto 0 auto;
   padding: .5em;
 }
 
@@ -162,11 +162,14 @@
 
 .frontoffice__home-article__image {
   width: 100%;
+  box-shadow: 7px 7px 7px rgb(14, 14, 14);
+  border-radius: 0 15px;
 }
 
 .frontoffice__home-article__title {
   font-size: 1.5em;
   color: rgb(226, 226, 226);
+  text-shadow: 3px 3px rgb(14, 14, 14);
   position: absolute;
   bottom: 20px;
   left: 20px;

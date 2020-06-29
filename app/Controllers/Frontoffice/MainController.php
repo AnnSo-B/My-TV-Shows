@@ -3,6 +3,7 @@
 namespace App\Controllers\Frontoffice;
 
 use App\Controllers\CoreController;
+use App\Models\Category;
 use App\Models\Series;
 
 class MainController extends CoreController {
@@ -16,12 +17,16 @@ class MainController extends CoreController {
         // get the 5 latest series
         $latestSeries = Series::findLatestSeries();
 
+        // get the 5 homepage categories
+        $homepageCategories = Category::findHomepageCategories();
+
         $this->show(
             'frontoffice',
             'main/home',
             [
                 'headTitle' => 'Bienvenue sur ',
-                'latestSeries' => $latestSeries
+                'latestSeries' => $latestSeries,
+                'homepageCategories' => $homepageCategories
             ]
         );
     }
