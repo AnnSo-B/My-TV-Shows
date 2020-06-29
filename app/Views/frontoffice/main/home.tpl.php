@@ -3,7 +3,7 @@
   <p class="frontoffice-intro__info">Pour découvrir de nouvelles séries et ne plus se demander quel est le dernier épisode de votre série préférée que vous avez regardé.</p>
 </section>
 
-<section>
+<section class="frontoffice__home-page__section">
   <h2 class="frontoffice__home-section__title">Les dernières séries</h2>
   <?php foreach ($latestSeries as $series) : ?>
     <article class="frontoffice__home-article">
@@ -21,7 +21,7 @@
   <?php endforeach ?>
 </section>
 
-<section>
+<section class="frontoffice__home-page__section">
   <h2 class="frontoffice__home-section__title">Les catégories à la une</h2>
   <?php foreach ($homepageCategories as $category) : ?>
     <article class="frontoffice__home-article">
