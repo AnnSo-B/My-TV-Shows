@@ -222,7 +222,7 @@ class Series extends CoreModel {
     \************************************************************************/
 
     /**
-     * Method to extract all categories from DB with associated category
+     * Method to extract all series from DB with associated category
      * 
      * @return Series[]
      */
@@ -269,6 +269,32 @@ class Series extends CoreModel {
         $results = $pdoStatement->fetchObject(self::class);
 
         // return the results
+        return $results;
+    }
+
+    /**
+     * Method to extract the 5 latest series
+     * 
+     * @return Series[]
+     */
+    static public function findLatestSeries()
+    {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = 'SELECT *
+            FROM `series`
+            ORDER BY `created_at` DESC
+            LIMIT 5';
+
+        // execute the request
+        $pdoStatement = $pdo->query($sql);
+
+        // prepare the results
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        // return it
         return $results;
     }
 
