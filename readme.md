@@ -17,18 +17,21 @@ Ce projet n'a pas vocation à être mis en ligne.
   - visualiser la liste des genres de séries, en ajouter, modifier et supprimer
   - connexion au backoffice par un administrateur et déconnexion, protection grâce au profil utilisateur et aux token CSRF
   - sélectionner les catégories de séries qui seront affichées sur la page d'accueil
+  - visualiser la liste des séries, en ajouter, modifier et supprimer
+
+- Frontoffice
+  - visualiser la liste des séries dès la page d'accueil
+  - visualiser les 5 catégories à la une dès la page d'accueil
 
 ### Quelques-unes à venir
 
 - Backoffice
   - visualiser la liste des acteurs, en ajouter, modifier et supprimer
-  - visualiser la liste des séries, en ajouter, modifier et supprimer
   - associer des séries et des acteurs
   - visualiser la liste des saisons disponibles pour une série, en ajouter, modifier et supprimer
   - visualiser la liste des épisodes disponibles pour une saison, en ajouter, modifier et supprimer
 
 - Frontoffice
-  - visualier la liste des séries dès la page d'accueil
   - connexion au compte utiliseur
   - visualiser la liste des saisons pour une série
   - visualiser la liste des épisodes pour une série
