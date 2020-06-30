@@ -5,6 +5,6 @@
       <!-- the css class we'll depend on the key -->
       <?php ($key === "success" ? $class="alert-success" : $class='alert-danger') ?>
       <!-- then we display the message -->
-      <div class="alert <?= $class ?>"><?= $message ?></div>
+      <div class="session__message alert <?= $class ?>"><?= $message ?></div>
     <?php endforeach ?>
   <?php endif ?>

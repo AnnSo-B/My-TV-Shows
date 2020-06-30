@@ -102,11 +102,13 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Frontoffice home.tpl.php*/
+/* Frontoffice */
 .frontoffice-main {
   position: absolute;
   top: 8vh;
   background-color: #8C2756;
+  width: 100%;
+  min-height: 100%;
 }
 
 .frontoffice-intro {
@@ -123,6 +125,7 @@
   line-height: 1.2em;
 }
 
+/* Frontoffice home.tpl.php*/
 .frontoffice__home-section__title {
   font-size: 1.6em;
   text-align: center;
@@ -154,6 +157,73 @@
   left: 20px;
 }
 
+/* Frontoffice login page */
+.session__message {
+  width: 90%;
+  margin: 0 auto 1em auto;
+}
+
+.frontoffice-login-form {
+  margin: auto 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__title {
+  text-align: center;
+  font-size: 1.5em;
+  color: #FFF;
+}
+
+.form__button, 
+.field__input {
+  border: 1px solid #FFF;
+  border-radius: 0.3em;
+}
+
+.form__button {
+  background: none;
+  padding: .6em 1em;
+  color: #FFF;
+  width: 60%;
+}
+
+.field {
+  margin: 1.5em;
+  position: relative;
+  width: 100%;
+}
+
+.field__input {
+  width: 100%;
+  height: 3.5em;
+  font-size: 1.2em;
+  padding: 2em 0.8em 0.8em 0.8em;
+}
+
+.field__label {
+  position: absolute;
+  top: .3rem;
+  left: .8em;
+  font-size: 1.1em;
+  color: #262626;
+  font-weight: bold;
+  animation: displayLabelAndSlideUp .5s;
+}
+
+@keyframes displayLabelAndSlideUp {
+  0% {
+    transform: translateY(1em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0em);
+    opacity: 1;
+  }
+}
+
+
 /* error pages */
 .error__title {
   text-align: center;
@@ -178,11 +248,11 @@
 }
 
 @media screen AND (min-width: 768px) {
+  /* frontoffice homepage */
   .frontoffice__home-page__section {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-end;
-    
   }
 
   .frontoffice__home-section__title {
@@ -197,10 +267,20 @@
   .frontoffice__home-article__image {
     height: 100%;
   }
+
+  /* frontoffice login page */
+  .session__message {
+    width: 80%;
+  }
+
+  .frontoffice-login-form {
+    width: 75%;
+    margin: 0 auto;
+  }
 }
 
 @media screen AND (min-width: 900px) {
-
+  /* frontoffice homepage */
   .frontoffice__home-article {
     width: 250px;
   }
@@ -209,6 +289,15 @@
   .frontoffice__home-article:nth-of-type(2) {
     width: 400px;
     height: 300px;
+  }
+
+  /* frontoffice login page */
+  .session__message {
+    width: 55%;
+  }
+
+  .frontoffice-login-form {
+    width: 50%;
   }
 }
 
