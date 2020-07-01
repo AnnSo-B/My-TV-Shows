@@ -186,7 +186,7 @@
   background: none;
   padding: .6em 1em;
   color: #FFF;
-  width: 60%;
+  width: 80%;
 }
 
 .field {
@@ -209,7 +209,7 @@
   font-size: 1.1em;
   color: #262626;
   font-weight: bold;
-  animation: displayLabelAndSlideUp .5s;
+  animation: displayLabelAndSlideUp 1s;
 }
 
 @keyframes displayLabelAndSlideUp {
