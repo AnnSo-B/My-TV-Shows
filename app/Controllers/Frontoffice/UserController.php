@@ -113,4 +113,20 @@ class UserController extends CoreController {
       global $router;
       header('Location: ' . $router->generate('frontoffice-main-home'));
     }
+    
+    /**
+     * Method to display the signup form page
+     *
+     * @return void
+     */
+    public function signup()
+    {  
+        $this->show(
+            'frontoffice',
+            'user/signupForm',
+            [
+                'headTitle' => 'S\'inscrire',
+            ]
+        );
+    }
 }

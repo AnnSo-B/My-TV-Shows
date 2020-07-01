@@ -42,3 +42,16 @@ $router->map(
   ],
   'frontoffice-user-logout'
 );
+
+/**
+ * Route to sign up form
+ */
+$router->map(
+  'GET',
+  '/signup',
+  [
+      'method' => 'signup',
+      'controller' => '\App\Controllers\Frontoffice\UserController'
+  ],
+  'frontoffice-user-signup'
+);
