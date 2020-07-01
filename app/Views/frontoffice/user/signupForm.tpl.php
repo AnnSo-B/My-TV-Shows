@@ -17,9 +17,14 @@
       include __DIR__.'/../partials/email_input.tpl.php';
     ?>
     <div class="field">
-      <label class="field__label" for="password">Votre pseudonyme</label>
-      <input class="field__input" type="password" class="form-control" id="password" aria-describedby="category-password" name="password" value="">
-      <small id="category-password" class="form-text text-muted"></small>
+      <label class="field__label" for="firstname">Votre prénom</label>
+      <input class="field__input" type="firstname" class="form-control" id="firstname" aria-describedby="firstname" name="firstname" value="">
+      <small id="firstname" class="form-text text-muted"></small>
+    </div>
+    <div class="field">
+      <label class="field__label" for="lastname">Votre nom</label>
+      <input class="field__input" type="lastname" class="form-control" id="lastname" aria-describedby="lastname" name="lastname" value="">
+      <small id="lastname" class="form-text text-muted"></small>
     </div>
     <!-- include password input -->    
     <?php
