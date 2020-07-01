@@ -9,7 +9,7 @@
 </section>
 
 <section>
-  <form class="frontoffice-login-form" action="#" method="POST">
+  <form class="frontoffice-login-form" action="<?= $router->generate('frontoffice-user-signup-post') ?>" method="POST">
     <h2 class="form__title">Formulaire d'inscription</h2>
     <input type="hidden" id="csrfToken" name="csrfToken" value="<?= $csrfToken ?>"/>
     <!-- include email input -->    

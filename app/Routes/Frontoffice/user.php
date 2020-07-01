@@ -55,3 +55,16 @@ $router->map(
   ],
   'frontoffice-user-signup'
 );
+
+/**
+ * Route to sign up a new user
+ */
+$router->map(
+  'POST',
+  '/signup',
+  [
+      'method' => 'signupPost',
+      'controller' => '\App\Controllers\Frontoffice\UserController'
+  ],
+  'frontoffice-user-signup-post'
+);
