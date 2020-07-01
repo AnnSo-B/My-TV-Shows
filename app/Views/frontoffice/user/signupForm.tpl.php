@@ -31,9 +31,9 @@
       include __DIR__.'/../partials/password_input.tpl.php';
     ?>
     <div class="field">
-      <label class="field__label" for="password">Confirmez votre mot de passe</label>
-      <input class="field__input" type="password" class="form-control" id="password" aria-describedby="category-password" name="password" value="">
-      <small id="category-password" class="form-text text-muted"></small>
+      <label class="field__label" for="password-confirmation">Confirmez votre mot de passe</label>
+      <input class="field__input" type="password-confirmation" class="form-control" id="password-confirmation" aria-describedby="password-confirmation" name="password-confirmation" value="">
+      <small id="password-confirmation" class="form-text text-muted"></small>
     </div>
     <!-- include submit button -->    
     <?php
