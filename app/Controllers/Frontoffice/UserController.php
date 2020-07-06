@@ -67,7 +67,6 @@ class UserController extends CoreController {
         // if the user exists
         else {
             // we have to check the password
-            // TODO : create a user and hash one password -> it'll change the way of checking the password
             // https://www.php.net/manual/fr/function.password-verify.php
             $passwordVerified = password_verify($password, $currentUser->getPassword());
             // if the password is not correct
@@ -254,5 +253,21 @@ class UserController extends CoreController {
 
         header("Location: " . $redirect);
         exit();
+    }
+
+    /**
+     * Method to display the profil
+     * 
+     * return void
+     */
+    public function profil()
+    {
+        $this->show(
+            'frontoffice',
+            'user/profil',
+            [
+                'headTitle' => 'Votre compte utilisateur - '
+            ]
+        );
     }
 }
