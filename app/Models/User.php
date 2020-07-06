@@ -187,9 +187,31 @@ class User extends CoreModel {
     }
 
     /************************************************************************\
-    |                Methods imposed by abstract CoreModel                   |
+    |            Methods imposed by abstract BackofficeController            |
     \************************************************************************/
-    static public function findAll() {}
+    
+    /**
+     * Method to extract all users from DB
+     *
+     * @return User[]
+     */
+    static public function findAll() {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = 'SELECT * FROM `user` ORDER BY `email` ASC';
+
+        // execute the request
+        $pdoStatement = $pdo->query($sql);
+
+        // prepare the results
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        //return it
+        return $results;
+    }
+
     static public function find($id) {}
 
     /**
