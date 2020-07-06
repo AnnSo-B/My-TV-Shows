@@ -16,16 +16,3 @@ $router->map(
   ],
   'backoffice-user-list'
 );
-
-/**
- * Route to add a new user form
- */
-$router->map(
-  'GET',
-  '/backoffice/user/add',
-  [
-      'method' => 'add',
-      'controller' => '\App\Controllers\Backoffice\UserController'
-  ],
-  'backoffice-user-add'
-);
