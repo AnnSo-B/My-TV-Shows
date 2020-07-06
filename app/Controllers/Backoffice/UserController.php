@@ -32,7 +32,23 @@ class UserController extends BackofficeController
     );
   }
 
-  public function add() {}
+  /**
+   * Method to display the add form
+   *
+   * @return void
+   */
+  public function add() {
+    //we display the form
+    $this->show(
+      'backoffice',
+      'user/form',
+      [
+          'headTitle' => 'Ajout d\'un utilisateur - Backoffice'
+      ]
+    );
+  }
+
+
   public function addPost() {}
   public function update($id) {}
   public function updatePost() {}

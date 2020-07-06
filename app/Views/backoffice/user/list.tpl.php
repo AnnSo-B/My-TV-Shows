@@ -1,9 +1,5 @@
-<?php
-dump($list);
-?>
-
 <main class="container my-4">
-  <a class="btn btn-success float-right" href="#">Ajouter</a>
+  <a class="btn btn-success float-right" href="<?= $router->generate('backoffice-user-add') ?>">Ajouter</a>
   <h2>Liste des utilisateurs</h2>
   <?php 
     include __DIR__.'/../partials/session_messages.tpl.php';
