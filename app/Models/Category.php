@@ -202,6 +202,9 @@ class Category extends CoreModel {
 
     /**
      * Method to find a category acording to its id
+     *
+     * @param [int] $id
+     * @return Category
      */
     static public function find($id)
     {

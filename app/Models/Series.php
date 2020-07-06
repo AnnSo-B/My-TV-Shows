@@ -249,6 +249,9 @@ class Series extends CoreModel {
 
     /**
      * Method to find a series according to its id
+     *
+     * @param [int] $id
+     * @return Series
      */
     static public function find($id)
     {
