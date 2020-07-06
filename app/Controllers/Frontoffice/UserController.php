@@ -198,6 +198,15 @@ class UserController extends CoreController {
             }
         }
 
+        // compare password and password confirmation
+        if ($passwordConfirmation !== $password) {
+            $message['password_comparison_failure'] = 'Votre mot de passe et la confirmation de celui-ci sont différents.'; 
+        }
+        // if its ok we'll want to hash the password
+        else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        }
+
         // save user data in session - for security reason we won't send password back
         $_SESSION['formData']['email'] = $email;
         $_SESSION['formData']['firstname'] = $firstname;
@@ -212,6 +221,7 @@ class UserController extends CoreController {
             header("Location: " . $router->generate('frontoffice-user-signup'));
             exit();
         }
+
         
         
     }

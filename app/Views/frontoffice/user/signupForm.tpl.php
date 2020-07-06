@@ -18,12 +18,12 @@
     ?>
     <div class="field">
       <label class="field__label" for="firstname">Votre prénom</label>
-      <input class="field__input" type="firstname" class="form-control" id="firstname" aria-describedby="firstname" name="firstname" value="">
+      <input class="field__input" type="firstname" class="form-control" id="firstname" aria-describedby="firstname" name="firstname" value="<?= $formData['firstname'] ?>">
       <small id="firstname" class="form-text text-muted"></small>
     </div>
     <div class="field">
       <label class="field__label" for="lastname">Votre nom</label>
-      <input class="field__input" type="lastname" class="form-control" id="lastname" aria-describedby="lastname" name="lastname" value="">
+      <input class="field__input" type="lastname" class="form-control" id="lastname" aria-describedby="lastname" name="lastname" value="<?= $formData['lastname'] ?>">
       <small id="lastname" class="form-text text-muted"></small>
     </div>
     <!-- include password input -->    
@@ -32,7 +32,7 @@
     ?>
     <div class="field">
       <label class="field__label" for="password-confirmation">Confirmez votre mot de passe</label>
-      <input class="field__input" type="password-confirmation" class="form-control" id="password-confirmation" aria-describedby="password-confirmation" name="password-confirmation" value="">
+      <input class="field__input" type="password" class="form-control" id="password-confirmation" aria-describedby="password-confirmation" name="password-confirmation" value="">
       <small id="password-confirmation" class="form-text text-muted"></small>
     </div>
     <!-- include submit button -->    
