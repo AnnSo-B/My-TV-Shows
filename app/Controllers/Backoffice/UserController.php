@@ -44,14 +44,33 @@ class UserController extends BackofficeController
    * @param int category Id
    * @return void
    */
-  public function update($id) {
+  public function update($id) 
+  {
+    // we extract the user
+    $user = USER::find($id);
+
+    //we need the router to redirect
+    global $router;
+
+    // message and redirection if the user doesn't exist
+    if (!$user) {
+      $message['failure'] = 'L\'utilisateur que vous souhaitez modifier n\'existe pas.';
+
+      // sage message in session
+      $_SESSION['sessionMessages'] = $message;
+
+      // redirect
+      header("Location: " . $router->generate('backoffice-user-list'));
+      exit();
+    }
 
     // we display the form
     $this->show(
       'backoffice',
       'user/form',
       [
-        'headTitle' => 'Modification d\'un utilisateur - Backoffice'
+        'headTitle' => 'Modification d\'un utilisateur - Backoffice',
+        'elem' => $user
       ]
     );
   }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Utils\Database;
 use PDO;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class User extends CoreModel {
 
@@ -212,7 +213,30 @@ class User extends CoreModel {
         return $results;
     }
 
-    static public function find($id) {}
+    /**
+     * Method to find a user according to its id
+     *
+     * @param [int] $id
+     * @return User
+     */
+    static public function find($id) {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = 'SELECT *
+            FROM `user`
+            WHERE `id` = '. $id;
+
+        // execute the request
+        $pdoStatement = $pdo->query($sql);
+
+        // prepare the result
+        $result = $pdoStatement->fetchObject(self::class);
+
+        // return the result
+        return $result;
+    }
 
     /**
      * Method to add a new entry in user table in DB
