@@ -27,4 +27,5 @@ $controlList = [
   'backoffice-user-update' => ['1'],
   'backoffice-user-update-post' => ['1'],
   // Routes/Frontoffice/user
+  'frontoffice-user-profil' => ['0', '1'],
 ];

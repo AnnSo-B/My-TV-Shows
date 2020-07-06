@@ -22,7 +22,7 @@
     <?php endif ?>
     <?php if (isset($_SESSION['userId'])) : ?>
       <li class="front-nav-item">
-        <a class="nav-link" href="#">Mon compte</a>
+        <a class="nav-link" href="<?= $router->generate('frontoffice-user-profil') ?>">Mon compte</a>
       </li>
     <?php endif ?>
     <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] === 1) : ?>

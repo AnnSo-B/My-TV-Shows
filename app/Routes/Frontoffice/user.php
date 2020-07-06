@@ -68,3 +68,16 @@ $router->map(
   ],
   'frontoffice-user-signup-post'
 );
+
+/**
+ * Route to the profil page
+ */
+$router->map(
+  'GET',
+  '/profil',
+  [
+      'method' => 'profil',
+      'controller' => '\App\Controllers\Frontoffice\UserController'
+  ],
+  'frontoffice-user-profil'
+);
