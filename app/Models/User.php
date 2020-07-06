@@ -191,7 +191,39 @@ class User extends CoreModel {
     \************************************************************************/
     static public function findAll() {}
     static public function find($id) {}
-    public function insert() {}
+
+    /**
+     * Method to add a new entry in user table in DB
+     *
+     * @return bool indicates the success or failure of the insertion
+     */
+    public function insert() {
+        // log into DB
+        $pdo = Database::getPDO();
+
+        // write the request
+        $sql = "INSERT INTO `user`
+            (`email`, `password`, `firstname`, `lastname`)
+            VALUES (:email, :password, :firstname, :lastname)";
+
+        // prepare the request
+        $pdoStatement = $pdo->prepare($sql);
+
+        // execute the request
+        $success = $pdoStatement->execute([
+            ':email' => $this->email,
+            ':password' => $this->password,
+            ':firstname' => $this->firstname,
+            ':lastname' => $this->lastname
+        ]);
+
+        // check the insertion
+        if ($success) {
+            $this->id = $pdo->lastInsertId();
+        }
+        return $success;
+    }
+
     public function update() {}
     public function delete() {}
 

@@ -222,7 +222,35 @@ class UserController extends CoreController {
             exit();
         }
 
-        
-        
+        // if there are no error messages, we'll create a new user
+        $newUser = new User();
+        // put a value on each property
+        $newUser->setEmail($email);
+        $newUser->setPassword($hashedPassword);
+        $newUser->setFirstname($firstname);
+        $newUser->setLastname($lastname);
+
+        // insert entry
+        $success = $newUser->save();
+
+        // we need the router to redirect
+        global $router;
+        // to the login form in case of success
+        // to the form in case of failure
+        if ($success) {
+            $message['success'] = 'Votre compte a été créé avec succès.';
+            $redirect = $router->generate('frontoffice-user-login');
+        } else {
+            $message['failure'] = 'Une erreur est survenue lors de la création de votre compte. Merci d\'essayer ultérieurement.';
+            $redirect = $router->generate('frontoffice-user-signup');
+        }
+
+        // save message in session
+        if (count($message) > 0) {
+            $_SESSION['sessionMessages'] = $message;
+        }
+
+        header("Location: " . $redirect);
+        exit();
     }
 }
