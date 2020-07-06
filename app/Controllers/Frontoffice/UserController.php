@@ -68,8 +68,10 @@ class UserController extends CoreController {
         else {
             // we have to check the password
             // TODO : create a user and hash one password -> it'll change the way of checking the password
+            // https://www.php.net/manual/fr/function.password-verify.php
+            $passwordVerified = password_verify($password, $currentUser->getPassword());
             // if the password is not correct
-            if ($password !== $currentUser->getPassword()) {
+            if (!$passwordVerified) {
                 // we send a message
                 $message['unknow-password'] = 'Le mot de passe est incorrect. Merci de le compléter à nouveau.';
     
