@@ -16,16 +16,14 @@
     <?php
       include __DIR__.'/../partials/email_input.tpl.php';
     ?>
-    <div class="field">
-      <label class="field__label" for="firstname">Votre prénom</label>
-      <input class="field__input" type="firstname" class="form-control" id="firstname" aria-describedby="firstname" name="firstname" value="<?= $formData['firstname'] ?>">
-      <small id="firstname" class="form-text text-muted"></small>
-    </div>
-    <div class="field">
-      <label class="field__label" for="lastname">Votre nom</label>
-      <input class="field__input" type="lastname" class="form-control" id="lastname" aria-describedby="lastname" name="lastname" value="<?= $formData['lastname'] ?>">
-      <small id="lastname" class="form-text text-muted"></small>
-    </div>
+    <!-- include firstname input -->    
+    <?php
+      include __DIR__.'/../partials/firstname_input.tpl.php';
+    ?>
+    <!-- include firstname input -->    
+    <?php
+      include __DIR__.'/../partials/lastname_input.tpl.php';
+    ?>
     <!-- include password input -->    
     <?php
       include __DIR__.'/../partials/password_input.tpl.php';
