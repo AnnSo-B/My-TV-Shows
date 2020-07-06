@@ -22,10 +22,10 @@
     <?php endif ?>
     <?php if (isset($_SESSION['userId'])) : ?>
       <li class="front-nav-item">
-        <a class="nav-link" href="<?= $router->generate('frontoffice-user-profil') ?>">Mon compte</a>
+        <a class="nav-link" href="<?= $router->generate('frontoffice-user-profil', ['id' => $_SESSION['userId']]) ?>">Mon compte</a>
       </li>
     <?php endif ?>
-    <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] === 1) : ?>
+    <?php if (isset($_SESSION['userId']) && $_SESSION['userData']->getRoleId() == 1) : ?>
       <li class="front-nav-item">
         <a class="nav-link" href="<?= $router->generate('backoffice-main-home') ?>">Backoffice</a>
       </li>
