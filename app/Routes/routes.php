@@ -11,6 +11,7 @@
 require_once __DIR__ . '/Backoffice/main.php';
 require_once __DIR__ . '/Backoffice/category.php';
 require_once __DIR__ . '/Backoffice/series.php';
+require_once __DIR__ . '/Backoffice/user.php';
 
 /************************************************************************\
 |                          Frontoffice Routes                             |

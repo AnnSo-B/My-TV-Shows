@@ -10,6 +10,7 @@
       <a class="btn btn-primary mx-auto justify-content-lg-between my-1 selection-button" href="<?= $router->generate('backoffice-category-list') ?>">Les catégories</a>
       <a class="btn btn-primary mx-auto justify-content-lg-between my-1 selection-button" href="<?= $router->generate('backoffice-category-selection') ?>">Les catégories de l'accueil</a>
       <a class="btn btn-primary mx-auto justify-content-lg-between my-1 selection-button" href="#">Les acteurs</a>
+      <a class="btn btn-primary mx-auto justify-content-lg-between my-1 selection-button" href="<?= $router->generate('backoffice-user-list') ?>">Les utilisateurs</a>
     </div>
   </section>
 </main>
