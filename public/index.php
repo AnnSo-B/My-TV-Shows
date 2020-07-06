@@ -31,7 +31,7 @@ if (array_key_exists('BASE_URI', $_SERVER)) {
  * Else, set Base Uri default value
  */
 else {
-    $_SERVER['BASE_URI'] = '';
+    $_SERVER['BASE_URI'] = '/';
 }
 
 /**
