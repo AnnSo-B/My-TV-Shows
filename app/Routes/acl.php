@@ -22,5 +22,9 @@ $controlList = [
   'backoffice-category-update-post' => ['1'],
   'backoffice-category-delete' => ['1'],
   'backoffice-category-delete-post' => ['1'],
+  // Routes/Backoffice/user
+  'backoffice-user-list' => ['1'],
+  'backoffice-user-update' => ['1'],
+  'backoffice-user-update-post' => ['1'],
   // Routes/Frontoffice/user
 ];
