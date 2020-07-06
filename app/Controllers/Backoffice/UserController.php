@@ -38,7 +38,25 @@ class UserController extends BackofficeController
   public function add() {}
   public function addPost() {}
 
-  public function update($id) {}
+  /**
+   * Method to display the update form
+   * 
+   * @param int category Id
+   * @return void
+   */
+  public function update($id) {
+
+    // we display the form
+    $this->show(
+      'backoffice',
+      'user/form',
+      [
+        'headTitle' => 'Modification d\'un utilisateur - Backoffice'
+      ]
+    );
+  }
+
+
   public function updatePost() {}
   public function delete($id) {}
   public function deletePost() {}

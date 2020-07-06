@@ -16,3 +16,16 @@ $router->map(
   ],
   'backoffice-user-list'
 );
+
+/**
+ * Route to a form to update a user
+ */
+$router->map(
+  'GET',
+  '/backoffice/user/update/[i:id]',
+  [
+    'method' => 'update',
+    'controller' => '\App\Controllers\Backoffice\UserController'
+  ],
+  'backoffice-user-update'
+);
