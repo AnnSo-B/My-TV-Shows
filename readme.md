@@ -35,3 +35,9 @@ Ce projet n'a pas vocation à être mis en ligne.
   - connexion au compte utiliseur
   - visualiser la liste des saisons pour une série
   - visualiser la liste des épisodes pour une série
+
+## Visuels
+
+![my-tv-shows-1](my-tv-shows-1.png)
+
+![my-tv-shows-2](my-tv-shows-2.png)
